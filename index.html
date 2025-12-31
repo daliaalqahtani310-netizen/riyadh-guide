@@ -6,109 +6,86 @@
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    direction: rtl;
+    background: linear-gradient(to right, #e0f7fa, #e8f5e9);
     margin: 0;
-    background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
-}
-
-header {
-    background-color: #004d40;
-    color: white;
-    padding: 30px;
-    text-align: center;
-    font-size: 28px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-.place {
-    background: white;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.place:hover {
-    background-color: #f1f8f7;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.details {
-    background: #ffffff;
-    margin-top: 10px;
-    padding: 15px;
-    border-radius: 12px;
-    display: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-
-.details img {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     width: 100%;
-    max-height: 250px;
+    max-width: 1200px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
     object-fit: cover;
-    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card h2 {
+    margin: 0 0 10px;
+    color: #00796b;
+}
+
+.card p {
+    display: none;
+    font-size: 14px;
     margin-bottom: 10px;
 }
 
-.details h2 {
-    color: #004d40;
-    margin-bottom: 10px;
-}
-
-.details p {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.map-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #00796b;
-    color: white;
+.card a {
+    display: none;
     text-decoration: none;
+    background: #00796b;
+    color: white;
+    padding: 8px 12px;
     border-radius: 8px;
-    transition: 0.3s;
+    font-size: 14px;
 }
 
-.map-btn:hover {
-    background-color: #004d40;
+.card.active {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.card.active img {
+    transform: scale(1.1);
+}
+
+.card.active p,
+.card.active a {
+    display: block;
 }
 </style>
 </head>
 <body>
 
-<header>
-دليل الرياض الفخم
-</header>
-
-<div class="container">
-
-<div class="place" data-index="0">الدرعية التاريخية</div>
-<div class="place" data-index="1">قصر المصمك</div>
-<div class="place" data-index="2">المتحف الوطني السعودي</div>
-<div class="place" data-index="3">جامعة الملك سعود</div>
-<div class="place" data-index="4">بوليفارد رياض سيتي</div>
-<div class="place" data-index="5">حديقة الملك عبدالله</div>
-<div class="place" data-index="6">برج المملكة</div>
-<div class="place" data-index="7">برج الفيصلية</div>
-<div class="place" data-index="8">وادي حنيفة</div>
-<div class="place" data-index="9">حديقة الحيوان بالرياض</div>
-
-<div class="details" id="details">
-    <img id="placeImg" src="" alt="صورة المكان">
-    <h2 id="placeName"></h2>
-    <p id="placeDesc"></p>
-    <a id="mapLink" target="_blank" class="map-btn">فتح الموقع على قوقل ماب</a>
-</div>
-
+<div class="container" id="container">
 </div>
 
 <script>
@@ -125,16 +102,24 @@ const places = [
     {name:"حديقة الحيوان بالرياض", desc:"وجهة تعليمية وترفيهية تضم أنواعًا مختلفة من الحيوانات.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض", img:"https://upload.wikimedia.org/wikipedia/commons/4/41/Riyadh_Zoo.jpg"}
 ];
 
-document.querySelectorAll('.place').forEach(el => {
-    el.addEventListener('click', () => {
-        const i = el.getAttribute('data-index');
-        document.getElementById('placeImg').src = places[i].img;
-        document.getElementById('placeName').innerText = places[i].name;
-        document.getElementById('placeDesc').innerText = places[i].desc;
-        document.getElementById('mapLink').href = places[i].map;
-        document.getElementById('details').style.display = 'block';
-        el.scrollIntoView({behavior:'smooth'});
+const container = document.getElementById('container');
+
+places.forEach((place, index) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+        <img src="${place.img}" alt="${place.name}">
+        <div class="card-content">
+            <h2>${place.name}</h2>
+            <p>${place.desc}</p>
+            <a href="${place.map}" target="_blank">فتح الموقع على قوقل ماب</a>
+        </div>
+    `;
+    card.addEventListener('click', () => {
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
     });
+    container.appendChild(card);
 });
 </script>
 
