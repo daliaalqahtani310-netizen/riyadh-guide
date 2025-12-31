@@ -2,23 +2,23 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>دليل الرياض - المملكة العربية السعودية</title>
+<title>دليل الرياض</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #007A33, #009245); /* تدرج أخضر */
+    background-color: #DDE6D1; /* أخضر زيتي فاتح */
     margin: 0;
     padding: 30px;
-    color: white;
+    color: #3B4F2B; /* زيتي غامق للنص */
 }
 
 h1 {
     text-align: center;
-    font-size: 42px;
-    margin-bottom: 20px;
-    color: #FFD700;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    font-size: 38px;
+    margin-bottom: 30px;
+    color: #3B4F2B;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .tab {
@@ -28,25 +28,26 @@ h1 {
 }
 
 .tab button {
-    background-color: #004d29;
-    border: 2px solid #FFD700;
+    background-color: #A3B18A; /* أخضر زيت فاتح */
+    border: none;
     outline: none;
     padding: 12px 25px;
     cursor: pointer;
     font-size: 18px;
-    color: white;
+    color: #3B4F2B;
     transition: 0.3s;
     margin: 0 5px;
     border-radius: 12px;
+    font-weight: bold;
 }
 
 .tab button:hover {
-    background-color: #007f4c;
+    background-color: #9CAF88;
 }
 
 .tab button.active {
-    background-color: #00a651;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    background-color: #7F8B5A;
+    color: #FFFFFF;
 }
 
 .tabcontent {
@@ -56,140 +57,13 @@ h1 {
 }
 
 .card {
-    background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
-    color: #000;
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+    background-color: #FFFFFF;
+    color: #3B4F2B;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     transition: transform 0.3s, box-shadow 0.3s;
-    border-top: 5px solid #FFD700;
-    position: relative;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 35px rgba(0,0,0,0.4);
-}
-
-.card h2 {
-    margin: 0;
-    color: #00796B;
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-}
-
-.card h2 i {
-    margin-left: 10px;
-    color: #FFD700;
-}
-
-.card a {
-    display: inline-block;
-    margin-top: 12px;
-    text-decoration: none;
-    background-color: #006C35;
-    color: #FFD700;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-.card a:hover {
-    background-color: #004d29;
-}
-
-</style>
-</head>
-<body>
-
-<h1>دليل الرياض - المملكة العربية السعودية</h1>
-
-<div class="tab">
-  <button class="tablinks active" onclick="openTab(event, 'تعليمية')"><i class="fas fa-book"></i> تعليمية</button>
-  <button class="tablinks" onclick="openTab(event, 'ترفيهية')"><i class="fas fa-futbol"></i> ترفيهية</button>
-  <button class="tablinks" onclick="openTab(event, 'أثرية')"><i class="fas fa-landmark"></i> أثرية</button>
-</div>
-
-<div id="تعليمية" class="tabcontent" style="display:block;"></div>
-<div id="ترفيهية" class="tabcontent"></div>
-<div id="أثرية" class="tabcontent"></div>
-
-<script>
-const data = {
-  "تعليمية": [
-    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة عبر العصور.", map:"https://maps.google.com/?q=المتحف+الوطني+السعودي"},
-    {name:"جامعة الملك سعود", desc:"أكبر الجامعات في المملكة.", map:"https://maps.google.com/?q=جامعة+الملك+سعود"},
-    {name:"مكتبة الملك فهد الوطنية", desc:"مكتبة مركزية كبيرة تحتوي على آلاف الكتب والمراجع.", map:"https://maps.google.com/?q=مكتبة+الملك+فهد+الوطنية"},
-    {name:"جامعة الأميرة نورة", desc:"جامعة تعليمية خاصة بالبنات.", map:"https://maps.google.com/?q=جامعة+الأميرة+نورة"},
-    {name:"متحف صقر الجزيرة للطيران", desc:"متحف يعرض تاريخ الطيران في المملكة.", map:"https://maps.google.com/?q=متحف+صقر+الجزيرة+للطيران"},
-    {name:"مركز الملك عبدالله المالي", desc:"مركز تعليم وتدريب مالي وتقني.", map:"https://maps.google.com/?q=مركز+الملك+عبدالله+المالي"},
-    {name:"معهد الرياض للتقنية", desc:"معهد تعليمي تقني متقدم.", map:"https://maps.google.com/?q=معهد+الرياض+للتقنية"},
-    {name:"مدينة الملك عبد الله للطاقة الذرية والمتجددة", desc:"مركز تعليمي وتدريبي للطاقة.", map:"https://maps.google.com/?q=مدينة+الملك+عبدالله+للطاقة"},
-    {name:"مكتبة جامعة الملك عبد العزيز", desc:"مكتبة تحتوي على مصادر تعليمية متنوعة.", map:"https://maps.google.com/?q=مكتبة+جامعة+الملك+عبد+العزيز"},
-    {name:"مركز الملك فهد للبحوث", desc:"مركز بحثي يقدم برامج تعليمية.", map:"https://maps.google.com/?q=مركز+الملك+فهد+للبحوث"}
-  ],
-  "ترفيهية": [
-    {name:"بوليفارد رياض سيتي", desc:"منطقة ترفيهية حديثة ضمن موسم الرياض.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي"},
-    {name:"حديقة الملك عبدالله", desc:"حديقة عامة كبيرة مناسبة للعائلات.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض"},
-    {name:"ملاهي سفوري لاند", desc:"مدينة ملاهي للأطفال والكبار.", map:"https://maps.google.com/?q=سفوري+لاند"},
-    {name:"مدينة الثلج", desc:"تجربة ثلجية ممتعة في الرياض.", map:"https://maps.google.com/?q=مدينة+الثلج+الرياض"},
-    {name:"رياض بارك", desc:"حديقة ترفيهية حديثة.", map:"https://maps.google.com/?q=رياض+بارك"},
-    {name:"مركز تسوق غرناطة", desc:"مركز تسوق وترفيه للعائلة.", map:"https://maps.google.com/?q=غرناطة+مول"},
-    {name:"بوليفارد النخيل", desc:"منطقة ترفيهية حديثة.", map:"https://maps.google.com/?q=بوليفارد+النخيل"},
-    {name:"سوق الزل", desc:"سوق شعبي ومكان ترفيهي.", map:"https://maps.google.com/?q=سوق+الزل"},
-    {name:"مسبح الملك عبدالله", desc:"مسبح عام وترفيهي.", map:"https://maps.google.com/?q=مسبح+الملك+عبدالله"},
-    {name:"حديقة الحيوان بالرياض", desc:"حديقة حيوانات كبيرة ومتنوعة.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض"}
-  ],
-  "أثرية": [
-    {name:"الدرعية التاريخية", desc:"موقع تراثي مهم في الرياض ومهد الدولة السعودية الأولى.", map:"https://maps.google.com/?q=الدرعية"},
-    {name:"قصر المصمك", desc:"حصن تاريخي مهم لعب دور في توحيد المملكة.", map:"https://maps.google.com/?q=قصر+المصمك"},
-    {name:"مقبرة قصر الحكم القديم", desc:"موقع تاريخي قديم.", map:"https://maps.google.com/?q=مقبرة+قصر+الحكم+القديم"},
-    {name:"حصن الفيصلية القديم", desc:"حصن تاريخي أثري.", map:"https://maps.google.com/?q=حصن+الفيصلية"},
-    {name:"مبنى البريد القديم", desc:"مبنى تراثي في الرياض.", map:"https://maps.google.com/?q=مبنى+البريد+القديم"},
-    {name:"سوق الزل القديم", desc:"سوق تاريخي مشهور.", map:"https://maps.google.com/?q=سوق+الزل+القديم"},
-    {name:"بيت الحكماء", desc:"موقع أثري قديم.", map:"https://maps.google.com/?q=بيت+الحكماء"},
-    {name:"موقع عين البطحاء", desc:"موقع أثري تاريخي.", map:"https://maps.google.com/?q=عين+البطحاء"},
-    {name:"قصر المربع", desc:"مبنى أثري مهم في وسط الرياض.", map:"https://maps.google.com/?q=قصر+المربع"},
-    {name:"حصن الرياض القديم", desc:"حصن تاريخي في قلب الرياض.", map:"https://maps.google.com/?q=حصن+الرياض+القديم"}
-  ]
-};
-
-function renderTab(category) {
-  const container = document.getElementById(category);
-  container.innerHTML = '';
-  data[category].forEach(place => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      let icon = '';
-      if(category === "تعليمية") icon = '<i class="fas fa-book"></i>';
-      if(category === "ترفيهية") icon = '<i class="fas fa-futbol"></i>';
-      if(category === "أثرية") icon = '<i class="fas fa-landmark"></i>';
-      card.innerHTML = `
-          <h2>${place.name} ${icon}</h2>
-          <p>${place.desc}</p>
-          <a href="${place.map}" target="_blank">فتح الموقع على قوقل ماب</a>
-      `;
-      container.appendChild(card);
-  });
-}
-
-renderTab('تعليمية');
-
-function openTab(evt, tabName) {
-  const tabcontents = document.getElementsByClassName("tabcontent");
-  for (let i = 0; i < tabcontents.length; i++) tabcontents[i].style.display = "none";
-
-  const tablinks = document.getElementsByClassName("tablinks");
-  for (let i = 0; i < tablinks.length; i++) tablinks[i].className = tablinks[i].className.replace(" active", "");
-
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-
-  renderTab(tabName);
-}
-</script>
-
-</body>
-</html>
+.card:hover
