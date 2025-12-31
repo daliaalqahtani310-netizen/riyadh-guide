@@ -96,16 +96,15 @@ body {
 
 <script>
 const places = [
-    {name:"الدرعية التاريخية", desc:"موقع تراثي مسجل في اليونسكو ويعد مهد الدولة السعودية الأولى.", map:"https://maps.google.com/?q=الدرعية", img:"https://images.unsplash.com/photo-1617196034011-2debc6d44b3d?auto=format&fit=crop&w=800&q=80"},
-    {name:"قصر المصمك", desc:"قلعة تاريخية لعبت دورًا مهمًا في توحيد المملكة العربية السعودية.", map:"https://maps.google.com/?q=قصر+المصمك", img:"https://images.unsplash.com/photo-1588200979700-7c15cfb1e02b?auto=format&fit=crop&w=800&q=80"},
-    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة من العصور القديمة حتى العصر الحديث.", map:"https://maps.google.com/?q=المتحف+الوطني+السعودي", img:"https://images.unsplash.com/photo-1597006641148-bab68c29ad5f?auto=format&fit=crop&w=800&q=80"},
-    {name:"جامعة الملك سعود", desc:"من أكبر وأقدم الجامعات في المملكة ومركز علمي مميز.", map:"https://maps.google.com/?q=جامعة+الملك+سعود", img:"https://images.unsplash.com/photo-1617196034075-2c539b51f1b4?auto=format&fit=crop&w=800&q=80"},
-    {name:"بوليفارد رياض سيتي", desc:"وجهة ترفيهية حديثة تضم فعاليات ومطاعم وعروض.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي", img:"https://images.unsplash.com/photo-1617196034032-fc8f4d8d2cbb?auto=format&fit=crop&w=800&q=80"},
-    {name:"حديقة الملك عبدالله", desc:"حديقة عامة مناسبة للعائلات والفعاليات المختلفة.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض", img:"https://images.unsplash.com/photo-1617196034072-dedf6526c7bb?auto=format&fit=crop&w=800&q=80"},
-    {name:"برج المملكة", desc:"معلم سياحي وتجاري شهير يطل على مدينة الرياض.", map:"https://maps.google.com/?q=برج+المملكة", img:"https://images.unsplash.com/photo-1617196034069-9f40f4167c2b?auto=format&fit=crop&w=800&q=80"},
-    {name:"برج الفيصلية", desc:"برج مشهور يحتوي على مطاعم وأسواق ومكاتب.", map:"https://maps.google.com/?q=برج+الفيصلية", img:"https://images.unsplash.com/photo-1617196034064-1a0f34c9a8c1?auto=format&fit=crop&w=800&q=80"},
-    {name:"وادي حنيفة", desc:"منتزه طبيعي مفتوح ومتنفس بيئي لسكان الرياض.", map:"https://maps.google.com/?q=وادي+حنيفة", img:"https://images.unsplash.com/photo-1617196034041-d0d2cabeaf2d?auto=format&fit=crop&w=800&q=80"},
-    {name:"حديقة الحيوان بالرياض", desc:"وجهة تعليمية وترفيهية تضم أنواعًا مختلفة من الحيوانات.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض", img:"https://images.unsplash.com/photo-1617196034036-3f2b5195e3df?auto=format&fit=crop&w=800&q=80"}
+    {name:"الدرعية التاريخية", desc:"موقع تراثي مسجل في اليونسكو ويعد مهد الدولة السعودية الأولى.", map:"https://maps.google.com/?q=الدرعية", img:"https://upload.wikimedia.org/wikipedia/commons/7/71/Diriyah_Masmak.jpg"},
+    {name:"قصر المصمك", desc:"قلعة تاريخية لعبت دورًا مهمًا في توحيد المملكة العربية السعودية.", map:"https://maps.google.com/?q=قصر+المصمك", img:"https://upload.wikimedia.org/wikipedia/commons/5/54/Masmak_Fort_2010.jpg"},
+    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة من العصور القديمة حتى العصر الحديث.", map:"https://maps.google.com/?q=المتحف+الوطني+السعودي", img:"https://upload.wikimedia.org/wikipedia/commons/d/dc/National_Museum_Riyadh.jpg"},
+    {name:"بوليفارد رياض سيتي", desc:"وجهة ترفيهية حديثة تضم فعاليات ومطاعم وعروض.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي", img:"https://upload.wikimedia.org/wikipedia/commons/f/f7/Boulevard_Riyadh.jpg"},
+    {name:"حديقة الملك عبدالله", desc:"حديقة عامة مناسبة للعائلات والفعاليات المختلفة.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض", img:"https://upload.wikimedia.org/wikipedia/commons/0/0c/King_Abdullah_Park.jpg"},
+    {name:"برج المملكة", desc:"معلم سياحي وتجاري شهير يطل على مدينة الرياض.", map:"https://maps.google.com/?q=برج+المملكة", img:"https://upload.wikimedia.org/wikipedia/commons/3/32/Kingdom_Center_Tower.jpg"},
+    {name:"برج الفيصلية", desc:"برج مشهور يحتوي على مطاعم وأسواق ومكاتب.", map:"https://maps.google.com/?q=برج+الفيصلية", img:"https://upload.wikimedia.org/wikipedia/commons/f/f2/Al-Faisaliah_Tower.jpg"},
+    {name:"وادي حنيفة", desc:"منتزه طبيعي مفتوح ومتنفس بيئي لسكان الرياض.", map:"https://maps.google.com/?q=وادي+حنيفة", img:"https://upload.wikimedia.org/wikipedia/commons/6/6c/Wadi_Hanifa.jpg"},
+    {name:"حديقة الحيوان بالرياض", desc:"وجهة تعليمية وترفيهية تضم أنواعًا مختلفة من الحيوانات.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض", img:"https://upload.wikimedia.org/wikipedia/commons/4/41/Riyadh_Zoo.jpg"}
 ];
 
 const container = document.getElementById('container');
