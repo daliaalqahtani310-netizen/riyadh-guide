@@ -2,88 +2,63 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>دليل الرياض الفخم</title>
+<title>دليل الرياض بالصور الحقيقية</title>
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #fff8e1, #e0f7fa);
+    background: linear-gradient(to bottom, #ffffff, #e0f2f1);
     margin: 0;
     padding: 40px;
     display: flex;
     justify-content: center;
 }
-
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 30px;
     width: 100%;
     max-width: 1400px;
 }
-
 .card {
     background: #ffffff;
     border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     cursor: pointer;
-    transition: transform 0.4s, box-shadow 0.4s;
-    position: relative;
+    transition: 0.4s;
+    overflow: hidden;
 }
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.3);
-}
-
 .card img {
     width: 100%;
-    height: 250px;
+    height: 240px;
     object-fit: cover;
-    transition: transform 0.4s;
 }
-
 .card-content {
-    padding: 25px;
+    padding: 18px;
 }
-
 .card h2 {
-    margin: 0 0 15px;
-    color: #00695c;
-    font-size: 24px;
+    margin: 0;
+    color: #00796b;
+    font-size: 22px;
 }
-
 .card p {
     display: none;
+    margin-top: 10px;
     font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1.5;
 }
-
 .card a {
     display: none;
+    margin-top: 10px;
     text-decoration: none;
     background: #00796b;
     color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-size: 16px;
-    transition: background 0.3s;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 15px;
 }
-
-.card a:hover {
-    background: #004d40;
-}
-
 .card.active {
-    transform: scale(1.1);
-    z-index: 2;
+    transform: scale(1.06);
 }
-
-.card.active img {
-    transform: scale(1.15);
-}
-
 .card.active p,
 .card.active a {
     display: block;
@@ -96,15 +71,60 @@ body {
 
 <script>
 const places = [
-    {name:"الدرعية التاريخية", desc:"موقع تراثي مميز في الرياض.", map:"https://maps.google.com/?q=الدرعية", img:"https://picsum.photos/id/1018/800/600"},
-    {name:"قصر المصمك", desc:"قلعة تاريخية مهمة في توحيد المملكة.", map:"https://maps.google.com/?q=قصر+المصمك", img:"https://picsum.photos/id/1025/800/600"},
-    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة من العصور القديمة حتى اليوم.", map:"https://maps.google.com/?q=المتحف+الوطني+السعودي", img:"https://picsum.photos/id/1031/800/600"},
-    {name:"بوليفارد رياض سيتي", desc:"وجهة ترفيهية حديثة تضم فعاليات ومطاعم.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي", img:"https://picsum.photos/id/1042/800/600"},
-    {name:"حديقة الملك عبدالله", desc:"حديقة عامة مناسبة للعائلات.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض", img:"https://picsum.photos/id/1050/800/600"},
-    {name:"برج المملكة", desc:"معلم سياحي وتجاري في الرياض.", map:"https://maps.google.com/?q=برج+المملكة", img:"https://picsum.photos/id/1069/800/600"},
-    {name:"برج الفيصلية", desc:"برج مشهور يحتوي على مطاعم وأسواق.", map:"https://maps.google.com/?q=برج+الفيصلية", img:"https://picsum.photos/id/1072/800/600"},
-    {name:"وادي حنيفة", desc:"منطقة طبيعية مفتوحة للتمشية والرحلات.", map:"https://maps.google.com/?q=وادي+حنيفة", img:"https://picsum.photos/id/1084/800/600"},
-    {name:"حديقة الحيوان بالرياض", desc:"وجهة تعليمية وترفيهية للعائلات والأطفال.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض", img:"https://picsum.photos/id/1080/800/600"}
+    {
+        name: "الدرعية التاريخية",
+        desc: "الدرعية التاريخية مهد الدولة السعودية الأولى، وتقع على ضفاف وادي حنيفة وتجمع بين التراث والطراز النجدي التاريخي.", 
+        map: "https://maps.google.com/?q=الدرعية+التاريخية",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Diriyah_walls.jpg/640px-Diriyah_walls.jpg"
+    },
+    {
+        name: "قصر المصمك",
+        desc: "الحصن التاريخي الذي لعب دوراً مهماً في استعادة الرياض ووحدة المملكة، اليوم متحف يعرض تاريخ البلاد.", 
+        map: "https://maps.google.com/?q=قصر+المصمك",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Al_Masmak_Fort_Riyadh.jpg/640px-Al_Masmak_Fort_Riyadh.jpg"
+    },
+    {
+        name: "المتحف الوطني السعودي",
+        desc: "واحد من أهم المتاحف الوطنية في الرياض، يعرض تاريخ شبه الجزيرة العربية والمملكة عبر العصور.", 
+        map: "https://maps.google.com/?q=المتحف+الوطني+السعودي",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/National_Museum_Riyadh.jpg/640px-National_Museum_Riyadh.jpg"
+    },
+    {
+        name: "بوليفارد رياض سيتي",
+        desc: "منطقة ترفيهية حديثة ضمن موسم الرياض تضم فعاليات، مطاعم، وعروضاً ممتعة.", 
+        map: "https://maps.google.com/?q=بوليفارد+رياض+سيتي",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Boulevard_Riyadh_Night_City.jpg/640px-Boulevard_Riyadh_Night_City.jpg"
+    },
+    {
+        name: "حديقة الملك عبدالله",
+        desc: "حديقة عامة كبيرة مناسبة للعائلات والتمشية، وتتميز بمساحات خضراء واسعة.", 
+        map: "https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/King_Abdullah_Park_Riyadh.jpg/640px-King_Abdullah_Park_Riyadh.jpg"
+    },
+    {
+        name: "برج المملكة",
+        desc: "أحد أشهر المعالم الحديثة في الرياض يحتوي على مركز تجاري وجسر مراقبة في الأعلى.", 
+        map: "https://maps.google.com/?q=برج+المملكة",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kingdom_Centre_Tower_in_Riyadh.jpg/640px-Kingdom_Centre_Tower_in_Riyadh.jpg"
+    },
+    {
+        name: "برج الفيصلية",
+        desc: "ناطحة سحاب مميزة بتصميمها في حي العليا تطل على أفق الرياض.", 
+        map: "https://maps.google.com/?q=برج+الفيصلية",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Al_Faisaliah_Tower_Riyadh.jpg/640px-Al_Faisaliah_Tower_Riyadh.jpg"
+    },
+    {
+        name: "وادي حنيفة",
+        desc: "وادي طبيعي ممتد في الرياض مناسب للتمشية والرحلات الطبيعية.", 
+        map: "https://maps.google.com/?q=وادي+حنيفة",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wadi_Hanifa_Riyadh.jpg/640px-Wadi_Hanifa_Riyadh.jpg"
+    },
+    {
+        name: "حديقة الحيوان بالرياض",
+        desc: "حديقة حيوانات كبيرة تضم أنواعاً متعددة من الحيوانات وتناسب العائلة.", 
+        map: "https://maps.google.com/?q=حديقة+الحيوان+بالرياض",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Riyadh_Zoo.jpg/640px-Riyadh_Zoo.jpg"
+    }
 ];
 
 const container = document.getElementById('container');
