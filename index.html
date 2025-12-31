@@ -6,54 +6,74 @@
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #87CEEB; /* سماوي */
+    background-color: #B3E5FC; /* سماوي فاتح */
     margin: 0;
     padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 h1 {
-    color: #004080;
-    font-size: 36px;
-    margin-bottom: 30px;
+    color: #01579B; /* أزرق غامق */
+    font-size: 40px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
+    gap: 30px;
     width: 100%;
     max-width: 1200px;
 }
+
 .card {
     background-color: #ffffff; /* بيضاء */
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
+
 .card h2 {
     margin: 0;
-    color: #00796b;
+    color: #00796B; /* أخضر داكن */
+    font-size: 22px;
 }
+
 .card p {
     display: none;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
 }
+
 .card a {
     display: none;
-    margin-top: 10px;
+    margin-top: 12px;
     text-decoration: none;
-    color: #003366; /* كحلي */
+    color: #0D47A1; /* كحلي */
     font-weight: bold;
+    transition: color 0.3s;
 }
+
+.card a:hover {
+    color: #82B1FF;
+    text-decoration: underline;
+}
+
+.card.active {
+    background-color: #E1F5FE; /* لون فاتح عند الضغط */
+    transform: scale(1.03);
+}
+
 .card.active p,
 .card.active a {
     display: block;
-}
-.card a:hover {
-    text-decoration: underline;
 }
 </style>
 </head>
