@@ -6,26 +6,26 @@
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #fffbf0, #e0f7fa);
+    background: linear-gradient(to right, #fff3e0, #e0f7fa);
     margin: 0;
-    padding: 30px;
+    padding: 40px;
     display: flex;
     justify-content: center;
 }
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 30px;
     width: 100%;
-    max-width: 1300px;
+    max-width: 1400px;
 }
 
 .card {
     background: #ffffff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
     cursor: pointer;
     transition: transform 0.4s, box-shadow 0.4s;
     position: relative;
@@ -33,30 +33,30 @@ body {
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.3);
 }
 
 .card img {
     width: 100%;
-    height: 220px;
+    height: 250px;
     object-fit: cover;
     transition: transform 0.4s;
 }
 
 .card-content {
-    padding: 20px;
+    padding: 25px;
 }
 
 .card h2 {
     margin: 0 0 15px;
     color: #00695c;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .card p {
     display: none;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: 15px;
 }
 
@@ -65,9 +65,9 @@ body {
     text-decoration: none;
     background: #00796b;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 16px;
     transition: background 0.3s;
 }
 
@@ -76,7 +76,7 @@ body {
 }
 
 .card.active {
-    transform: scale(1.08);
+    transform: scale(1.1);
     z-index: 2;
 }
 
@@ -96,16 +96,16 @@ body {
 
 <script>
 const places = [
-    {name:"الدرعية التاريخية", desc:"موقع تراثي مسجل في اليونسكو ويعد مهد الدولة السعودية الأولى.", map:"https://maps.google.com/?q=الدرعية", img:"https://images.unsplash.com/photo-1617196034011-2debc6d44b3d?auto=format&fit=crop&w=800&q=80"},
-    {name:"قصر المصمك", desc:"قلعة تاريخية لعبت دورًا مهمًا في توحيد المملكة العربية السعودية.", map:"https://maps.google.com/?q=قصر+المصمك", img:"https://images.unsplash.com/photo-1588200979700-7c15cfb1e02b?auto=format&fit=crop&w=800&q=80"},
-    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة من العصور القديمة حتى العصر الحديث.", map:"https://maps.unsplash.com/photo-1597006641148-bab68c29ad5f?auto=format&fit=crop&w=800&q=80", img:"https://images.unsplash.com/photo-1597006641148-bab68c29ad5f?auto=format&fit=crop&w=800&q=80"},
-    {name:"جامعة الملك سعود", desc:"من أكبر وأقدم الجامعات في المملكة ومركز علمي مميز.", map:"https://maps.google.com/?q=جامعة+الملك+سعود", img:"https://images.unsplash.com/photo-1617196034075-2c539b51f1b4?auto=format&fit=crop&w=800&q=80"},
-    {name:"بوليفارد رياض سيتي", desc:"وجهة ترفيهية حديثة تضم فعاليات ومطاعم وعروض.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي", img:"https://images.unsplash.com/photo-1617196034032-fc8f4d8d2cbb?auto=format&fit=crop&w=800&q=80"},
-    {name:"حديقة الملك عبدالله", desc:"حديقة عامة مناسبة للعائلات والفعاليات المختلفة.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض", img:"https://images.unsplash.com/photo-1617196034072-dedf6526c7bb?auto=format&fit=crop&w=800&q=80"},
-    {name:"برج المملكة", desc:"معلم سياحي وتجاري شهير يطل على مدينة الرياض.", map:"https://maps.google.com/?q=برج+المملكة", img:"https://images.unsplash.com/photo-1617196034069-9f40f4167c2b?auto=format&fit=crop&w=800&q=80"},
-    {name:"برج الفيصلية", desc:"برج مشهور يحتوي على مطاعم وأسواق ومكاتب.", map:"https://maps.google.com/?q=برج+الفيصلية", img:"https://images.unsplash.com/photo-1617196034064-1a0f34c9a8c1?auto=format&fit=crop&w=800&q=80"},
-    {name:"وادي حنيفة", desc:"منتزه طبيعي مفتوح ومتنفس بيئي لسكان الرياض.", map:"https://maps.google.com/?q=وادي+حنيفة", img:"https://images.unsplash.com/photo-1617196034041-d0d2cabeaf2d?auto=format&fit=crop&w=800&q=80"},
-    {name:"حديقة الحيوان بالرياض", desc:"وجهة تعليمية وترفيهية تضم أنواعًا مختلفة من الحيوانات.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض", img:"https://images.unsplash.com/photo-1617196034036-3f2b5195e3df?auto=format&fit=crop&w=800&q=80"}
+    {name:"الدرعية التاريخية", desc:"موقع تراثي مسجل في اليونسكو ويعد مهد الدولة السعودية الأولى.", map:"https://maps.google.com/?q=الدرعية", img:"https://images.pexels.com/photos/163064/diriyah-saudi-arabia-travel-163064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"قصر المصمك", desc:"قلعة تاريخية لعبت دورًا مهمًا في توحيد المملكة العربية السعودية.", map:"https://maps.google.com/?q=قصر+المصمك", img:"https://images.pexels.com/photos/3649136/pexels-photo-3649136.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة من العصور القديمة حتى العصر الحديث.", map:"https://maps.google.com/?q=المتحف+الوطني+السعودي", img:"https://images.pexels.com/photos/259585/pexels-photo-259585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"جامعة الملك سعود", desc:"من أكبر وأقدم الجامعات في المملكة ومركز علمي مميز.", map:"https://maps.google.com/?q=جامعة+الملك+سعود", img:"https://images.pexels.com/photos/279548/pexels-photo-279548.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"بوليفارد رياض سيتي", desc:"وجهة ترفيهية حديثة تضم فعاليات ومطاعم وعروض.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي", img:"https://images.pexels.com/photos/1646316/pexels-photo-1646316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"حديقة الملك عبدالله", desc:"حديقة عامة مناسبة للعائلات والفعاليات المختلفة.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض", img:"https://images.pexels.com/photos/271631/pexels-photo-271631.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"برج المملكة", desc:"معلم سياحي وتجاري شهير يطل على مدينة الرياض.", map:"https://maps.google.com/?q=برج+المملكة", img:"https://images.pexels.com/photos/280204/pexels-photo-280204.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"برج الفيصلية", desc:"برج مشهور يحتوي على مطاعم وأسواق ومكاتب.", map:"https://maps.google.com/?q=برج+الفيصلية", img:"https://images.pexels.com/photos/235105/pexels-photo-235105.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"وادي حنيفة", desc:"منتزه طبيعي مفتوح ومتنفس بيئي لسكان الرياض.", map:"https://maps.google.com/?q=وادي+حنيفة", img:"https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"},
+    {name:"حديقة الحيوان بالرياض", desc:"وجهة تعليمية وترفيهية تضم أنواعًا مختلفة من الحيوانات.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض", img:"https://images.pexels.com/photos/1459392/pexels-photo-1459392.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}
 ];
 
 const container = document.getElementById('container');
