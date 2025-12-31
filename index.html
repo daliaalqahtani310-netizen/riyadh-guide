@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>دليل الرياض</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,55 +14,127 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 38px;
+    font-size: 36px;
     margin-bottom: 30px;
-    color: #3B4F2B;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-.tab {
+.tabs {
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
+    gap: 10px;
 }
 
-.tab button {
-    background-color: #A3B18A; /* أخضر زيت فاتح */
-    border: none;
-    outline: none;
+.tabs button {
     padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 18px;
+    background-color: #A3B18A;
     color: #3B4F2B;
     transition: 0.3s;
-    margin: 0 5px;
-    border-radius: 12px;
     font-weight: bold;
 }
 
-.tab button:hover {
+.tabs button.active {
+    background-color: #7F8B5A;
+    color: white;
+}
+
+.tabs button:hover {
     background-color: #9CAF88;
 }
 
-.tab button.active {
-    background-color: #7F8B5A;
-    color: #FFFFFF;
-}
-
-.tabcontent {
-    display: none;
-    max-width: 1200px;
+.container {
+    max-width: 900px;
     margin: auto;
 }
 
 .card {
-    background-color: #FFFFFF;
+    background-color: white;
     color: #3B4F2B;
     border-radius: 15px;
     padding: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card p, .card a {
+    display: none; /* يختفي حتى يضغط */
+    margin-top: 10px;
+}
+
+.card.open p, .card.open a {
+    display: block;
+}
+
+.card a {
+    color: #3B4F2B;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h1>دليل الرياض</h1>
+
+<div class="tabs">
+    <button class="active" onclick="openTab('تعليمية', this)">تعليمية</button>
+    <button onclick="openTab('ترفيهية', this)">ترفيهية</button>
+    <button onclick="openTab('أثرية', this)">أثرية</button>
+</div>
+
+<div class="container" id="content"></div>
+
+<script>
+const data = {
+  "تعليمية": [
+    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة عبر العصور.", map:"https://maps.google.com/?q=المتحف+الوطني+السعودي"},
+    {name:"جامعة الملك سعود", desc:"أكبر الجامعات في المملكة.", map:"https://maps.google.com/?q=جامعة+الملك+سعود"},
+    {name:"مكتبة الملك فهد الوطنية", desc:"مكتبة كبيرة تحتوي على آلاف الكتب.", map:"https://maps.google.com/?q=مكتبة+الملك+فهد+الوطنية"}
+  ],
+  "ترفيهية": [
+    {name:"بوليفارد رياض سيتي", desc:"منطقة ترفيهية حديثة.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي"},
+    {name:"حديقة الملك عبدالله", desc:"حديقة عامة كبيرة.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض"},
+    {name:"ملاهي سفوري لاند", desc:"مدينة ملاهي للأطفال والكبار.", map:"https://maps.google.com/?q=سفوري+لاند"}
+  ],
+  "أثرية": [
+    {name:"الدرعية التاريخية", desc:"موقع تراثي مهم في الرياض.", map:"https://maps.google.com/?q=الدرعية"},
+    {name:"قصر المصمك", desc:"حصن تاريخي مهم.", map:"https://maps.google.com/?q=قصر+المصمك"},
+    {name:"قصر المربع", desc:"مبنى أثري مهم في وسط الرياض.", map:"https://maps.google.com/?q=قصر+المربع"}
+  ]
+};
+
+function render(category) {
+    const container = document.getElementById('content');
+    container.innerHTML = '';
+    data[category].forEach(place => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<h2>${place.name}</h2><p>${place.desc}</p><a href="${place.map}" target="_blank">فتح على Google Maps</a>`;
+        card.onclick = () => card.classList.toggle('open');
+        container.appendChild(card);
+    });
+}
+
+// تبويب مفتوح افتراضي
+render('تعليمية');
+
+function openTab(category, btn) {
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(category);
+}
+</script>
+
+</body>
+</html>
