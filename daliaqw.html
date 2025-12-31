@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>دليل الرياض</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#dde6d1;
+    color:#2f3e1f;
+}
+h1{
+    text-align:center;
+    padding:20px;
+}
+.tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+.tabs button{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#a3b18a;
+    color:#2f3e1f;
+    font-weight:bold;
+}
+.tabs button.active{
+    background:#7f8b5a;
+    color:white;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:10px;
+}
+.card{
+    background:white;
+    border-radius:14px;
+    padding:18px;
+    margin-bottom:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    cursor:pointer;
+}
+.card p,.card a{
+    display:none;
+    margin-top:10px;
+}
+.card.open p,.card.open a{
+    display:block;
+}
+.card a{
+    text-decoration:none;
+    font-weight:bold;
+    color:#2f3e1f;
+}
+</style>
+</head>
+
+<body>
+
+<h1>دليل مدينة الرياض</h1>
+
+<div class="tabs">
+    <button class="active" onclick="openTab('edu',this)">تعليمية</button>
+    <button onclick="openTab('fun',this)">ترفيهية</button>
+    <button onclick="openTab('his',this)">أثرية</button>
+</div>
+
+<div class="container" id="content"></div>
+
+<script>
+const data={
+edu:[
+["المتحف الوطني السعودي","يعرض تاريخ المملكة.","المتحف الوطني السعودي"],
+["جامعة الملك سعود","أكبر جامعة في المملكة.","جامعة الملك سعود"],
+["جامعة الأميرة نورة","جامعة تعليمية للبنات.","جامعة الأميرة نورة"],
+["مكتبة الملك فهد","مكتبة وطنية.","مكتبة الملك فهد الوطنية"],
+["متحف صقر الجزيرة","متحف الطيران.","متحف صقر الجزيرة"],
+["مدينة الملك عبدالعزيز للعلوم","بحث علمي.","مدينة الملك عبدالعزيز للعلوم والتقنية"],
+["معهد الإدارة العامة","معهد تدريبي.","معهد الإدارة العامة"],
+["جامعة الفيصل","جامعة خاصة.","جامعة الفيصل"],
+["معهد الرياض التقني","تعليم تقني.","معهد الرياض للتقنية"],
+["مركز الملك عبدالله المالي","مركز مالي.","مركز الملك عبدالله المالي"]
+],
+fun:[
+["بوليفارد رياض سيتي","منطقة ترفيهية.","بوليفارد رياض سيتي"],
+["واجهة الرياض","مطاعم وترفيه.","واجهة الرياض"],
+["حديقة الملك عبدالله","حديقة عائلية.","حديقة الملك عبدالله الرياض"],
+["حديقة الحيوان","حديقة حيوانات.","حديقة الحيوان بالرياض"],
+["وادي نمار","منتزه طبيعي.","وادي نمار"],
+["منتزه سلام","منتزه عائلي.","منتزه سلام"],
+["غرناطة مول","تسوق وترفيه.","غرناطة مول"],
+["النخيل مول","مركز تجاري.","النخيل مول الرياض"],
+["رياض بارك","حديقة عامة.","رياض بارك"],
+["سفوري لاند","ملاهي أطفال.","سفوري لاند الرياض"]
+],
+his:[
+["الدرعية التاريخية","مهد الدولة السعودية.","الدرعية"],
+["حي الطريف","موقع تراث عالمي.","حي الطريف"],
+["قصر المصمك","حصن تاريخي.","قصر المصمك"],
+["قصر المربع","قصر أثري.","قصر المربع"],
+["قصر الحكم","موقع تاريخي.","قصر الحكم"],
+["سوق الزل","سوق تراثي.","سوق الزل"],
+["عين البطحاء","موقع تاريخي.","عين البطحاء"],
+["بيت المال","موقع أثري.","بيت المال الرياض"],
+["مبنى البريد القديم","مبنى تراثي.","مبنى البريد القديم الرياض"],
+["حصن الرياض القديم","حصن تاريخي.","حصن الرياض القديم"]
+]
+};
+
+function render(type){
+    const box=document.getElementById("content");
+    box.innerHTML="";
+    data[type].forEach(p=>{
+        const d=document.createElement("div");
+        d.className="card";
+        d.innerHTML=`
+        <h3>${p[0]}</h3>
+        <p>${p[1]}</p>
+        <a onclick="event.stopPropagation()" target="_blank"
+        href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p[2])}">
+        فتح الموقع على Google Maps
+        </a>`;
+        d.onclick=()=>d.classList.toggle("open");
+        box.appendChild(d);
+    });
+}
+render("edu");
+
+function openTab(type,btn){
+    document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    render(type);
+}
+</script>
+
+</body>
+</html>
