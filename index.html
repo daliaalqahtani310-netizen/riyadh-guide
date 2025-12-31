@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>دليل الرياض الشامل</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #1e7f5c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+.place {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #1e7f5c;
+    font-size: 18px;
+}
+
+.place:hover {
+    background-color: #e0f2ec;
+}
+
+.details {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    display: none;
+}
+
+.map-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #1e7f5c;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>دليل الرياض الشامل</h1>
+    <p>اختر المكان لمعرفة التفاصيل</p>
+</header>
+
+<div class="container">
+
+    <!-- قائمة الأماكن -->
+    <div class="place" onclick="showPlace(0)">الدرعية التاريخية</div>
+    <div class="place" onclick="showPlace(1)">قصر المصمك</div>
+    <div class="place" onclick="showPlace(2)">المتحف الوطني السعودي</div>
+    <div class="place" onclick="showPlace(3)">جامعة الملك سعود</div>
+    <div class="place" onclick="showPlace(4)">بوليفارد رياض سيتي</div>
+    <div class="place" onclick="showPlace(5)">حديقة الملك عبدالله</div>
+    <div class="place" onclick="showPlace(6)">برج المملكة</div>
+    <div class="place" onclick="showPlace(7)">برج الفيصلية</div>
+    <div class="place" onclick="showPlace(8)">وادي حنيفة</div>
+    <div class="place" onclick="showPlace(9)">حديقة الحيوان بالرياض</div>
+
+    <!-- تفاصيل المكان -->
+    <div class="details" id="details">
+        <h2 id="placeName"></h2>
+        <p id="placeDesc"></p>
+        <a id="mapLink" target="_blank" class="map-btn">فتح الموقع على قوقل ماب</a>
+    </div>
+
+</div>
+
+<script>
+const places = [
+    {
+        name: "الدرعية التاريخية",
+        desc: "موقع تراثي مسجل في اليونسكو ويعد مهد الدولة السعودية الأولى.",
+        map: "https://maps.google.com/?q=الدرعية"
+    },
+    {
+        name: "قصر المصمك",
+        desc: "قلعة تاريخية لعبت دورًا مهمًا في توحيد المملكة العربية السعودية.",
+        map: "https://maps.google.com/?q=قصر المصمك"
+    },
+    {
+        name: "المتحف الوطني السعودي",
+        desc: "يعرض تاريخ المملكة من العصور القديمة حتى العصر الحديث.",
+        map: "https://maps.google.com/?q=المتحف الوطني السعودي"
+    },
+    {
+        name: "جامعة الملك سعود",
+        desc: "من أكبر وأقدم الجامعات في المملكة ومركز علمي مميز.",
+        map: "https://maps.google.com/?q=جامعة الملك سعود"
+    },
+    {
+        name: "بوليفارد رياض سيتي",
+        desc: "وجهة ترفيهية حديثة تضم فعاليات ومطاعم وعروض.",
+        map: "https://maps.google.com/?q=بوليفارد رياض سيتي"
+    },
+    {
+        name: "حديقة الملك عبدالله",
+        desc: "حديقة عامة مناسبة للعائلات والفعاليات المختلفة.",
+        map: "https://maps.google.com/?q=حديقة الملك عبدالله الرياض"
+    },
+    {
+        name: "برج المملكة",
+        desc: "معلم سياحي وتجاري شهير يطل على مدينة الرياض.",
+        map: "https://maps.google.com/?q=برج المملكة"
+    },
+    {
+        name: "برج الفيصلية",
+        desc: "برج مشهور يحتوي على مطاعم وأسواق ومكاتب.",
+        map: "https://maps.google.com/?q=برج الفيصلية"
+    },
+    {
+        name: "وادي حنيفة",
+        desc: "منتزه طبيعي مفتوح ومتنفس بيئي لسكان الرياض.",
+        map: "https://maps.google.com/?q=وادي حنيفة"
+    },
+    {
+        name: "حديقة الحيوان بالرياض",
+        desc: "وجهة تعليمية وترفيهية تضم أنواعًا مختلفة من الحيوانات.",
+        map: "https://maps.google.com/?q=حديقة الحيوان بالرياض"
+    }
+];
+
+function showPlace(index) {
+    document.getElementById("placeName").innerText = places[index].name;
+    document.getElementById("placeDesc").innerText = places[index].desc;
+    document.getElementById("mapLink").href = places[index].map;
+    document.getElementById("details").style.display = "block";
+}
+</script>
+
+</body>
+</html>
