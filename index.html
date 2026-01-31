@@ -2,157 +2,146 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>دليل الرياض</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riyadh Guide</title>
+
 <style>
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #DDE6D1; /* أخضر زيتي فاتح */
-    margin: 0;
-    padding: 30px;
-    color: #3B4F2B; /* زيتي غامق للنص */
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  direction:rtl;
+  background:url('1509e974-6e21-447b-ab53-9724c0dce997.png') center top/cover no-repeat fixed;
 }
-
-h1 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 30px;
+.overlay{
+  background:rgba(0,0,0,0.65);
+  min-height:100vh;
+  color:white;
 }
-
-.tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-    gap: 10px;
+header{
+  text-align:center;
+  padding:25px 15px;
 }
-
-.tabs button {
-    padding: 12px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #A3B18A;
-    color: #3B4F2B;
-    transition: 0.3s;
-    font-weight: bold;
+header h1{margin:0}
+header input{
+  margin-top:15px;
+  width:90%;
+  max-width:420px;
+  padding:12px;
+  border-radius:25px;
+  border:none;
 }
-
-.tabs button.active {
-    background-color: #7F8B5A;
-    color: white;
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
 }
-
-.tabs button:hover {
-    background-color: #9CAF88;
+.card{
+  background:white;
+  color:#333;
+  width:260px;
+  margin:10px;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  cursor:pointer;
+  font-size:18px;
 }
-
-.container {
-    max-width: 900px;
-    margin: auto;
+.section{
+  display:none;
+  padding:20px;
 }
-
-.card {
-    background-color: white;
-    color: #3B4F2B;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+.place{
+  background:white;
+  color:#333;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:10px;
 }
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.card p, .card a {
-    display: none; 
-    margin-top: 10px;
-}
-
-.card.open p, .card.open a {
-    display: block;
-}
-
-.card a {
-    color: #3B4F2B;
-    text-decoration: none;
-    font-weight: bold;
+.place h3{margin:0 0 5px}
+.place a{text-decoration:none;font-weight:bold}
+.back{
+  margin-bottom:15px;
+  cursor:pointer;
+  font-weight:bold;
 }
 </style>
 </head>
+
 <body>
+<div class="overlay">
 
-<h1>دليل الرياض</h1>
+<header>
+  <h1>Riyadh Guide</h1>
+  <p>دليل شامل لأماكن الرياض</p>
+  <input type="text" id="search" placeholder="🔍 ابحث عن مكان" onkeyup="searchPlaces()">
+</header>
 
-<div class="tabs">
-    <button class="active" onclick="openTab('تعليمية', this)">تعليمية</button>
-    <button onclick="openTab('ترفيهية', this)">ترفيهية</button>
-    <button onclick="openTab('أثرية', this)">أثرية</button>
+<!-- الرئيسية -->
+<section id="home" class="section" style="display:block">
+  <div class="cards">
+    <div class="card" onclick="openSection('education')">📚 تعليمية</div>
+    <div class="card" onclick="openSection('heritage')">🏛️ أثرية</div>
+    <div class="card" onclick="openSection('fun')">🎡 ترفيهية</div>
+  </div>
+</section>
+
+<!-- ================= تعليمية ================= -->
+<section id="education" class="section">
+  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
+  <div class="cards">
+    <div class="card" onclick="openSection('universities')">🎓 الجامعات</div>
+    <div class="card" onclick="openSection('libraries')">📖 المكتبات</div>
+  </div>
+</section>
+
+<section id="universities" class="section">
+  <div class="back" onclick="openSection('education')">⬅️ رجوع</div>
+
+  <div class="place"><h3>جامعة الملك سعود</h3><p>أقدم جامعة في الرياض.</p><a href="https://maps.google.com/?q=جامعة+الملك+سعود" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>جامعة الأميرة نورة</h3><p>أكبر جامعة نسائية.</p><a href="https://maps.google.com/?q=جامعة+الأميرة+نورة" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>جامعة الإمام</h3><p>جامعة حكومية.</p><a href="https://maps.google.com/?q=جامعة+الإمام+محمد+بن+سعود" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>جامعة الفيصل</h3><p>جامعة أهلية.</p><a href="https://maps.google.com/?q=جامعة+الفيصل" target="_blank">📍 الموقع</a></div>
+</section>
+
+<section id="libraries" class="section">
+  <div class="back" onclick="openSection('education')">⬅️ رجوع</div>
+  <div class="place"><h3>مكتبة الملك فهد</h3><p>مركز ثقافي.</p><a href="https://maps.google.com/?q=مكتبة+الملك+فهد" target="_blank">📍 الموقع</a></div>
+</section>
+
+<!-- ================= أثرية ================= -->
+<section id="heritage" class="section">
+  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
+
+  <div class="place"><h3>قصر المصمك</h3><p>معلم تاريخي شهير.</p><a href="https://maps.google.com/?q=قصر+المصمك" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>الدرعية التاريخية</h3><p>مهد الدولة السعودية.</p><a href="https://maps.google.com/?q=الدرعية+التاريخية" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>المتحف الوطني</h3><p>تاريخ المملكة.</p><a href="https://maps.google.com/?q=المتحف+الوطني+السعودي" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>قصر المربع</h3><p>قصر ملكي قديم.</p><a href="https://maps.google.com/?q=قصر+المربع" target="_blank">📍 الموقع</a></div>
+</section>
+
+<!-- ================= ترفيهية ================= -->
+<section id="fun" class="section">
+  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
+
+  <div class="place"><h3>بوليفارد رياض سيتي</h3><p>أكبر منطقة ترفيه.</p><a href="https://maps.google.com/?q=بوليفارد+رياض+سيتي" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>الرياض بارك</h3><p>مجمع تسوق وترفيه.</p><a href="https://maps.google.com/?q=الرياض+بارك" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>النخيل مول</h3><p>تسوق ومطاعم.</p><a href="https://maps.google.com/?q=النخيل+مول+الرياض" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>كيدزانيا</h3><p>مدينة تعليمية للأطفال.</p><a href="https://maps.google.com/?q=كيدزانيا+الرياض" target="_blank">📍 الموقع</a></div>
+</section>
+
 </div>
 
-<div class="container" id="content"></div>
-
 <script>
-const data = {
-  "تعليمية": [
-    {name:"المتحف الوطني السعودي", desc:"يعرض تاريخ المملكة عبر العصور.", map:"https://maps.google.com/?q=المتحف+الوطني+السعودي"},
-    {name:"جامعة الملك سعود", desc:"أكبر الجامعات في المملكة.", map:"https://maps.google.com/?q=جامعة+الملك+سعود"},
-    {name:"مكتبة الملك فهد الوطنية", desc:"مكتبة كبيرة تحتوي على آلاف الكتب.", map:"https://maps.google.com/?q=مكتبة+الملك+فهد+الوطنية"},
-    {name:"جامعة الأميرة نورة", desc:"جامعة تعليمية خاصة بالبنات.", map:"https://maps.google.com/?q=جامعة+الأميرة+نورة"},
-    {name:"متحف صقر الجزيرة للطيران", desc:"يعرض تاريخ الطيران في المملكة.", map:"https://maps.google.com/?q=متحف+صقر+الجزيرة+للطيران"},
-    {name:"مركز الملك عبدالله المالي", desc:"مركز تعليم وتدريب مالي وتقني.", map:"https://maps.google.com/?q=مركز+الملك+عبدالله+المالي"},
-    {name:"معهد الرياض للتقنية", desc:"معهد تعليمي تقني متقدم.", map:"https://maps.google.com/?q=معهد+الرياض+للتقنية"},
-    {name:"مدينة الملك عبد الله للطاقة", desc:"مركز تعليمي للطاقة.", map:"https://maps.google.com/?q=مدينة+الملك+عبدالله+للطاقة"},
-    {name:"مكتبة جامعة الملك عبد العزيز", desc:"مكتبة تحتوي على مصادر تعليمية متنوعة.", map:"https://maps.google.com/?q=مكتبة+جامعة+الملك+عبد+العزيز"},
-    {name:"مركز الملك فهد للبحوث", desc:"مركز بحثي يقدم برامج تعليمية.", map:"https://maps.google.com/?q=مركز+الملك+فهد+للبحوث"}
-  ],
-  "ترفيهية": [
-    {name:"بوليفارد رياض سيتي", desc:"منطقة ترفيهية حديثة.", map:"https://maps.google.com/?q=بوليفارد+رياض+سيتي"},
-    {name:"حديقة الملك عبدالله", desc:"حديقة عامة كبيرة.", map:"https://maps.google.com/?q=حديقة+الملك+عبدالله+الرياض"},
-    {name:"ملاهي سفوري لاند", desc:"مدينة ملاهي للأطفال والكبار.", map:"https://maps.google.com/?q=سفوري+لاند"},
-    {name:"مدينة الثلج", desc:"تجربة ثلجية ممتعة.", map:"https://maps.google.com/?q=مدينة+الثلج+الرياض"},
-    {name:"رياض بارك", desc:"حديقة ترفيهية حديثة.", map:"https://maps.google.com/?q=رياض+بارك"},
-    {name:"مركز تسوق غرناطة", desc:"مركز تسوق وترفيه.", map:"https://maps.google.com/?q=غرناطة+مول"},
-    {name:"بوليفارد النخيل", desc:"منطقة ترفيهية حديثة.", map:"https://maps.google.com/?q=بوليفارد+النخيل"},
-    {name:"سوق الزل", desc:"سوق شعبي ومكان ترفيهي.", map:"https://maps.google.com/?q=سوق+الزل"},
-    {name:"مسبح الملك عبدالله", desc:"مسبح عام وترفيهي.", map:"https://maps.google.com/?q=مسبح+الملك+عبدالله"},
-    {name:"حديقة الحيوان بالرياض", desc:"حديقة حيوانات كبيرة.", map:"https://maps.google.com/?q=حديقة+الحيوان+بالرياض"}
-  ],
-  "أثرية": [
-    {name:"الدرعية التاريخية", desc:"موقع تراثي مهم في الرياض.", map:"https://maps.google.com/?q=الدرعية"},
-    {name:"قصر المصمك", desc:"حصن تاريخي مهم.", map:"https://maps.google.com/?q=قصر+المصمك"},
-    {name:"قصر المربع", desc:"مبنى أثري مهم.", map:"https://maps.google.com/?q=قصر+المربع"},
-    {name:"حصن الرياض القديم", desc:"حصن تاريخي في قلب الرياض.", map:"https://maps.google.com/?q=حصن+الرياض+القديم"},
-    {name:"سوق الزل القديم", desc:"سوق تاريخي مشهور.", map:"https://maps.google.com/?q=سوق+الزل+القديم"},
-    {name:"بيت الحكماء", desc:"موقع أثري قديم.", map:"https://maps.google.com/?q=بيت+الحكماء"},
-    {name:"عين البطحاء", desc:"موقع أثري تاريخي.", map:"https://maps.google.com/?q=عين+البطحاء"},
-    {name:"قصر الحكم القديم", desc:"قصر قديم مهم.", map:"https://maps.google.com/?q=قصر+الحكم+القديم"},
-    {name:"حصن الفيصلية القديم", desc:"حصن تاريخي أثري.", map:"https://maps.google.com/?q=حصن+الفيصلية"},
-    {name:"مبنى البريد القديم", desc:"مبنى تراثي في الرياض.", map:"https://maps.google.com/?q=مبنى+البريد+القديم"}
-  ]
-};
-
-function render(category) {
-    const container = document.getElementById('content');
-    container.innerHTML = '';
-    data[category].forEach(place => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `<h2>${place.name}</h2><p>${place.desc}</p><a href="${place.map}" target="_blank">فتح على Google Maps</a>`;
-        card.onclick = () => card.classList.toggle('open');
-        container.appendChild(card);
-    });
+function openSection(id){
+  document.querySelectorAll(".section").forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="block";
 }
 
-render('تعليمية');
-
-function openTab(category, btn) {
-    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    render(category);
+function searchPlaces(){
+  let v=document.getElementById("search").value.toLowerCase();
+  document.querySelectorAll(".section").forEach(s=>s.style.display="block");
+  document.querySelectorAll(".place").forEach(p=>{
+    p.style.display=p.innerText.toLowerCase().includes(v)?"block":"none";
+  });
 }
 </script>
 
