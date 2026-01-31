@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riyadh Guide</title>
+<title>بوابة الرياض</title>
 
 <style>
 body{
@@ -21,15 +21,16 @@ header{
   text-align:center;
   padding:25px 15px;
 }
-header h1{margin:0}
+header h1{margin:0;font-size:32px}
+header p{margin:5px 0 15px}
 header input{
-  margin-top:15px;
   width:90%;
   max-width:420px;
   padding:12px;
   border-radius:25px;
   border:none;
 }
+.section{display:none;padding:20px}
 .cards{
   display:flex;
   flex-wrap:wrap;
@@ -45,10 +46,6 @@ header input{
   text-align:center;
   cursor:pointer;
   font-size:18px;
-}
-.section{
-  display:none;
-  padding:20px;
 }
 .place{
   background:white;
@@ -71,21 +68,31 @@ header input{
 <div class="overlay">
 
 <header>
-  <h1>Riyadh Guide</h1>
-  <p>دليل شامل لأماكن الرياض</p>
+  <h1>بوابة الرياض</h1>
+  <p>دليل شامل لمعالم وأنشطة مدينة الرياض</p>
   <input type="text" id="search" placeholder="🔍 ابحث عن مكان" onkeyup="searchPlaces()">
 </header>
 
-<!-- الرئيسية -->
+<!-- الصفحة الرئيسية -->
 <section id="home" class="section" style="display:block">
   <div class="cards">
-    <div class="card" onclick="openSection('education')">📚 تعليمية</div>
     <div class="card" onclick="openSection('heritage')">🏛️ أثرية</div>
+    <div class="card" onclick="openSection('education')">📚 تعليمية</div>
     <div class="card" onclick="openSection('fun')">🎡 ترفيهية</div>
   </div>
 </section>
 
-<!-- ================= تعليمية ================= -->
+<!-- ================= الأثرية ================= -->
+<section id="heritage" class="section">
+  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
+
+  <div class="place"><h3>قصر المصمك</h3><p>معلم تاريخي بارز.</p><a href="https://maps.google.com/?q=قصر+المصمك" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>الدرعية التاريخية</h3><p>مهد الدولة السعودية.</p><a href="https://maps.google.com/?q=الدرعية+التاريخية" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>المتحف الوطني</h3><p>يعرض تاريخ المملكة.</p><a href="https://maps.google.com/?q=المتحف+الوطني+السعودي" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>قصر المربع</h3><p>قصر ملكي تاريخي.</p><a href="https://maps.google.com/?q=قصر+المربع" target="_blank">📍 الموقع</a></div>
+</section>
+
+<!-- ================= التعليمية ================= -->
 <section id="education" class="section">
   <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
   <div class="cards">
@@ -99,32 +106,21 @@ header input{
 
   <div class="place"><h3>جامعة الملك سعود</h3><p>أقدم جامعة في الرياض.</p><a href="https://maps.google.com/?q=جامعة+الملك+سعود" target="_blank">📍 الموقع</a></div>
   <div class="place"><h3>جامعة الأميرة نورة</h3><p>أكبر جامعة نسائية.</p><a href="https://maps.google.com/?q=جامعة+الأميرة+نورة" target="_blank">📍 الموقع</a></div>
-  <div class="place"><h3>جامعة الإمام</h3><p>جامعة حكومية.</p><a href="https://maps.google.com/?q=جامعة+الإمام+محمد+بن+سعود" target="_blank">📍 الموقع</a></div>
-  <div class="place"><h3>جامعة الفيصل</h3><p>جامعة أهلية.</p><a href="https://maps.google.com/?q=جامعة+الفيصل" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>جامعة الإمام</h3><p>جامعة حكومية عريقة.</p><a href="https://maps.google.com/?q=جامعة+الإمام+محمد+بن+سعود" target="_blank">📍 الموقع</a></div>
 </section>
 
 <section id="libraries" class="section">
   <div class="back" onclick="openSection('education')">⬅️ رجوع</div>
-  <div class="place"><h3>مكتبة الملك فهد</h3><p>مركز ثقافي.</p><a href="https://maps.google.com/?q=مكتبة+الملك+فهد" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>مكتبة الملك فهد</h3><p>مركز ثقافي ومعرفي.</p><a href="https://maps.google.com/?q=مكتبة+الملك+فهد" target="_blank">📍 الموقع</a></div>
 </section>
 
-<!-- ================= أثرية ================= -->
-<section id="heritage" class="section">
-  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
-
-  <div class="place"><h3>قصر المصمك</h3><p>معلم تاريخي شهير.</p><a href="https://maps.google.com/?q=قصر+المصمك" target="_blank">📍 الموقع</a></div>
-  <div class="place"><h3>الدرعية التاريخية</h3><p>مهد الدولة السعودية.</p><a href="https://maps.google.com/?q=الدرعية+التاريخية" target="_blank">📍 الموقع</a></div>
-  <div class="place"><h3>المتحف الوطني</h3><p>تاريخ المملكة.</p><a href="https://maps.google.com/?q=المتحف+الوطني+السعودي" target="_blank">📍 الموقع</a></div>
-  <div class="place"><h3>قصر المربع</h3><p>قصر ملكي قديم.</p><a href="https://maps.google.com/?q=قصر+المربع" target="_blank">📍 الموقع</a></div>
-</section>
-
-<!-- ================= ترفيهية ================= -->
+<!-- ================= الترفيهية ================= -->
 <section id="fun" class="section">
   <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
 
-  <div class="place"><h3>بوليفارد رياض سيتي</h3><p>أكبر منطقة ترفيه.</p><a href="https://maps.google.com/?q=بوليفارد+رياض+سيتي" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>بوليفارد رياض سيتي</h3><p>منطقة ترفيه عالمية.</p><a href="https://maps.google.com/?q=بوليفارد+رياض+سيتي" target="_blank">📍 الموقع</a></div>
   <div class="place"><h3>الرياض بارك</h3><p>مجمع تسوق وترفيه.</p><a href="https://maps.google.com/?q=الرياض+بارك" target="_blank">📍 الموقع</a></div>
-  <div class="place"><h3>النخيل مول</h3><p>تسوق ومطاعم.</p><a href="https://maps.google.com/?q=النخيل+مول+الرياض" target="_blank">📍 الموقع</a></div>
+  <div class="place"><h3>النخيل مول</h3><p>أسواق ومطاعم.</p><a href="https://maps.google.com/?q=النخيل+مول+الرياض" target="_blank">📍 الموقع</a></div>
   <div class="place"><h3>كيدزانيا</h3><p>مدينة تعليمية للأطفال.</p><a href="https://maps.google.com/?q=كيدزانيا+الرياض" target="_blank">📍 الموقع</a></div>
 </section>
 
