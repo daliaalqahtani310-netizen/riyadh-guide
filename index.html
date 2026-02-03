@@ -8,37 +8,38 @@
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
+  font-family:Tahoma, Arial, sans-serif;
   direction:rtl;
-  background:url('riyadh-bg.jpg') center/cover no-repeat fixed;
+  background:url('riyadh.jpg') center/cover no-repeat fixed;
 }
 
 .overlay{
-  background:rgba(0,50,30,0.75);
+  background:rgba(0,60,40,0.78);
   min-height:100vh;
   color:white;
 }
 
 header{
   text-align:center;
-  padding:35px 15px;
+  padding:40px 15px;
 }
 
 header h1{
-  font-size:38px;
+  font-size:42px;
   margin:0;
-  color:#a8f0c6;
+  color:#b9f6d3;
 }
 
 header p{
-  margin:10px 0 20px;
+  margin:15px 0 25px;
+  font-size:18px;
 }
 
 header input{
   width:90%;
-  max-width:400px;
-  padding:12px;
-  border-radius:25px;
+  max-width:420px;
+  padding:14px;
+  border-radius:30px;
   border:none;
   font-size:16px;
 }
@@ -47,19 +48,20 @@ header input{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
-  gap:15px;
+  gap:20px;
   padding:20px;
 }
 
 .card{
-  background:#e9f7ef;
+  background:#e6f7ef;
   color:#064635;
   width:260px;
-  padding:20px;
-  border-radius:15px;
+  padding:25px;
+  border-radius:18px;
   text-align:center;
   cursor:pointer;
-  font-size:18px;
+  font-size:20px;
+  font-weight:bold;
 }
 
 .section{
@@ -67,46 +69,54 @@ header input{
   padding:20px;
 }
 
+.back{
+  margin-bottom:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
 .place{
   background:white;
   color:#064635;
-  border-radius:15px;
-  margin-bottom:15px;
+  border-radius:18px;
+  margin-bottom:20px;
   overflow:hidden;
-  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+  box-shadow:0 6px 12px rgba(0,0,0,0.25);
 }
 
 .place img{
   width:100%;
-  height:180px;
+  height:200px;
   object-fit:cover;
 }
 
 .place-content{
-  padding:15px;
+  padding:18px;
 }
 
 .place h3{
-  margin:0 0 8px;
+  margin:0 0 10px;
+  font-size:20px;
+}
+
+.place p{
+  font-size:15px;
+  line-height:1.7;
 }
 
 .place a{
+  display:inline-block;
+  margin-top:10px;
   color:#1b8a5a;
   font-weight:bold;
   text-decoration:none;
 }
 
-.back{
-  margin-bottom:15px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
 footer{
   text-align:center;
-  padding:20px;
+  padding:25px;
   background:#033d2e;
-  font-size:14px;
+  font-size:15px;
 }
 </style>
 </head>
@@ -116,7 +126,7 @@ footer{
 
 <header>
   <h1>استكشف الرياض</h1>
-  <p>دليل متكامل لأهم أماكن مدينة الرياض</p>
+  <p>دليل شامل ومنظم لأهم الأماكن التعليمية، الأثرية والترفيهية في مدينة الرياض</p>
   <input type="text" id="search" placeholder="ابحث عن مكان" onkeyup="searchPlaces()">
 </header>
 
@@ -128,75 +138,85 @@ footer{
   </div>
 </section>
 
-<!-- تعليمية -->
+<!-- التعليمية -->
 <section id="education" class="section">
 <div class="back" onclick="openSection('home')">رجوع</div>
 
 <div class="place">
-<img src="https://source.unsplash.com/600x400/?university">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/King_Saud_University.jpg">
 <div class="place-content">
 <h3>جامعة الملك سعود</h3>
-<p>من أقدم الجامعات في المملكة.</p>
-<a href="https://maps.google.com/?q=جامعة+الملك+سعود" target="_blank">الموقع</a>
+<p>تُعد من أقدم وأكبر الجامعات في المملكة العربية السعودية، وتضم العديد من الكليات والتخصصات العلمية والطبية والهندسية.</p>
+<a href="https://maps.google.com/?q=جامعة+الملك+سعود" target="_blank">عرض الموقع</a>
 </div>
 </div>
 
 <div class="place">
-<img src="https://source.unsplash.com/600x400/?library">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Princess_Nourah_University.jpg">
 <div class="place-content">
-<h3>مكتبة الملك فهد</h3>
-<p>صرح ثقافي ومعرفي مميز.</p>
-<a href="https://maps.google.com/?q=مكتبة+الملك+فهد" target="_blank">الموقع</a>
+<h3>جامعة الأميرة نورة</h3>
+<p>أكبر جامعة نسائية في العالم، تهدف إلى تمكين المرأة تعليمياً وتطوير مهاراتها في مختلف المجالات.</p>
+<a href="https://maps.google.com/?q=جامعة+الأميرة+نورة" target="_blank">عرض الموقع</a>
 </div>
 </div>
 
-<!-- كرري نفس البلوك واضيفي حتى 10 -->
+<div class="place">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/King_Fahd_National_Library.jpg">
+<div class="place-content">
+<h3>مكتبة الملك فهد الوطنية</h3>
+<p>مركز ثقافي ومعرفي يضم آلاف الكتب والمخطوطات ويُعد من أهم المعالم الثقافية في الرياض.</p>
+<a href="https://maps.google.com/?q=مكتبة+الملك+فهد" target="_blank">عرض الموقع</a>
+</div>
+</div>
+
 </section>
 
-<!-- أثرية -->
+<!-- الأثرية -->
 <section id="heritage" class="section">
 <div class="back" onclick="openSection('home')">رجوع</div>
 
 <div class="place">
-<img src="https://source.unsplash.com/600x400/?heritage">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Masmak_Fort.jpg">
 <div class="place-content">
 <h3>قصر المصمك</h3>
-<p>معلم تاريخي مهم في الرياض.</p>
-<a href="https://maps.google.com/?q=قصر+المصمك" target="_blank">الموقع</a>
+<p>قلعة تاريخية شهيرة لعبت دوراً مهماً في توحيد المملكة، وتُعد رمزاً من رموز تاريخ الرياض.</p>
+<a href="https://maps.google.com/?q=قصر+المصمك" target="_blank">عرض الموقع</a>
 </div>
 </div>
 
 <div class="place">
-<img src="https://source.unsplash.com/600x400/?museum">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/National_Museum_Riyadh.jpg">
 <div class="place-content">
 <h3>المتحف الوطني</h3>
-<p>يعرض تاريخ المملكة وثقافتها.</p>
-<a href="https://maps.google.com/?q=المتحف+الوطني" target="_blank">الموقع</a>
+<p>يعرض تاريخ المملكة العربية السعودية منذ القدم وحتى العصر الحديث بأسلوب تعليمي حديث.</p>
+<a href="https://maps.google.com/?q=المتحف+الوطني" target="_blank">عرض الموقع</a>
 </div>
 </div>
+
 </section>
 
-<!-- ترفيهية -->
+<!-- الترفيه -->
 <section id="fun" class="section">
 <div class="back" onclick="openSection('home')">رجوع</div>
 
 <div class="place">
-<img src="https://source.unsplash.com/600x400/?mall">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Riyadh_Park_Mall.jpg">
 <div class="place-content">
 <h3>الرياض بارك</h3>
-<p>مجمع تجاري وترفيهي متكامل.</p>
-<a href="https://maps.google.com/?q=رياض+بارك" target="_blank">الموقع</a>
+<p>مجمع تجاري وترفيهي يضم محلات عالمية، مطاعم، ومناطق مخصصة للترفيه العائلي.</p>
+<a href="https://maps.google.com/?q=رياض+بارك" target="_blank">عرض الموقع</a>
 </div>
 </div>
 
 <div class="place">
-<img src="https://source.unsplash.com/600x400/?theme-park">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Riyadh_Boulevard.jpg">
 <div class="place-content">
 <h3>بوليفارد رياض سيتي</h3>
-<p>منطقة ألعاب ومطاعم وعروض.</p>
-<a href="https://maps.google.com/?q=بوليفارد+رياض+سيتي" target="_blank">الموقع</a>
+<p>وجهة ترفيهية حديثة تضم ألعاب، مسارح، مطاعم ومناطق فعاليات متنوعة.</p>
+<a href="https://maps.google.com/?q=بوليفارد+رياض+سيتي" target="_blank">عرض الموقع</a>
 </div>
 </div>
+
 </section>
 
 <footer>
