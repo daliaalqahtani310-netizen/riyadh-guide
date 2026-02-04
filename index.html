@@ -3,121 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>استكشف الرياض</title>
+<title>بوابة الرياض</title>
 
 <style>
 body{
   margin:0;
-  font-family:Tahoma, Arial, sans-serif;
+  font-family:Arial,sans-serif;
   direction:rtl;
-  background:url('riyadh.jpg') center/cover no-repeat fixed;
+  background:url("./riyadh.png") center/cover no-repeat;
 }
-
 .overlay{
-  background:rgba(0,60,40,0.78);
+  background:rgba(0,0,0,0.65);
   min-height:100vh;
   color:white;
 }
-
 header{
   text-align:center;
-  padding:40px 15px;
+  padding:25px;
 }
-
-header h1{
-  font-size:42px;
-  margin:0;
-  color:#b9f6d3;
-}
-
-header p{
-  margin:15px 0 25px;
-  font-size:18px;
-}
-
+header h1{margin:0}
 header input{
+  margin-top:15px;
   width:90%;
   max-width:420px;
-  padding:14px;
-  border-radius:30px;
+  padding:12px;
+  border-radius:25px;
   border:none;
-  font-size:16px;
 }
-
+.section{display:none;padding:20px}
 .cards{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
-  gap:20px;
-  padding:20px;
 }
-
 .card{
-  background:#e6f7ef;
-  color:#064635;
+  background:white;
+  color:#333;
   width:260px;
-  padding:25px;
-  border-radius:18px;
+  margin:10px;
+  padding:20px;
+  border-radius:15px;
   text-align:center;
   cursor:pointer;
-  font-size:20px;
-  font-weight:bold;
 }
-
-.section{
-  display:none;
-  padding:20px;
-}
-
-.back{
-  margin-bottom:20px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
 .place{
   background:white;
-  color:#064635;
-  border-radius:18px;
-  margin-bottom:20px;
-  overflow:hidden;
-  box-shadow:0 6px 12px rgba(0,0,0,0.25);
+  color:#333;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:10px;
 }
-
-.place img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
-
-.place-content{
-  padding:18px;
-}
-
-.place h3{
-  margin:0 0 10px;
-  font-size:20px;
-}
-
-.place p{
-  font-size:15px;
-  line-height:1.7;
-}
-
-.place a{
-  display:inline-block;
-  margin-top:10px;
-  color:#1b8a5a;
-  font-weight:bold;
-  text-decoration:none;
-}
-
-footer{
-  text-align:center;
-  padding:25px;
-  background:#033d2e;
-  font-size:15px;
-}
+.place a{text-decoration:none;font-weight:bold}
+.back{margin-bottom:15px;cursor:pointer}
 </style>
 </head>
 
@@ -125,104 +62,43 @@ footer{
 <div class="overlay">
 
 <header>
-  <h1>استكشف الرياض</h1>
-  <p>دليل شامل ومنظم لأهم الأماكن التعليمية، الأثرية والترفيهية في مدينة الرياض</p>
-  <input type="text" id="search" placeholder="ابحث عن مكان" onkeyup="searchPlaces()">
+  <h1>بوابة الرياض</h1>
+  <p>دليل شامل لمعالم وأنشطة مدينة الرياض</p>
+  <input type="text" id="search" placeholder="🔍 ابحث عن مكان" onkeyup="searchPlaces()">
 </header>
 
 <section id="home" class="section" style="display:block">
   <div class="cards">
-    <div class="card" onclick="openSection('education')">الأماكن التعليمية</div>
-    <div class="card" onclick="openSection('heritage')">الأماكن الأثرية</div>
-    <div class="card" onclick="openSection('fun')">الأماكن الترفيهية</div>
+    <div class="card" onclick="openSection('heritage')">🏛️ أثرية</div>
+    <div class="card" onclick="openSection('education')">📚 تعليمية</div>
+    <div class="card" onclick="openSection('fun')">🎡 ترفيهية</div>
   </div>
 </section>
 
-<!-- التعليمية -->
-<section id="education" class="section">
-<div class="back" onclick="openSection('home')">رجوع</div>
-
-<div class="place">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/King_Saud_University.jpg">
-<div class="place-content">
-<h3>جامعة الملك سعود</h3>
-<p>تُعد من أقدم وأكبر الجامعات في المملكة العربية السعودية، وتضم العديد من الكليات والتخصصات العلمية والطبية والهندسية.</p>
-<a href="https://maps.google.com/?q=جامعة+الملك+سعود" target="_blank">عرض الموقع</a>
-</div>
-</div>
-
-<div class="place">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Princess_Nourah_University.jpg">
-<div class="place-content">
-<h3>جامعة الأميرة نورة</h3>
-<p>أكبر جامعة نسائية في العالم، تهدف إلى تمكين المرأة تعليمياً وتطوير مهاراتها في مختلف المجالات.</p>
-<a href="https://maps.google.com/?q=جامعة+الأميرة+نورة" target="_blank">عرض الموقع</a>
-</div>
-</div>
-
-<div class="place">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/King_Fahd_National_Library.jpg">
-<div class="place-content">
-<h3>مكتبة الملك فهد الوطنية</h3>
-<p>مركز ثقافي ومعرفي يضم آلاف الكتب والمخطوطات ويُعد من أهم المعالم الثقافية في الرياض.</p>
-<a href="https://maps.google.com/?q=مكتبة+الملك+فهد" target="_blank">عرض الموقع</a>
-</div>
-</div>
-
-</section>
-
-<!-- الأثرية -->
 <section id="heritage" class="section">
-<div class="back" onclick="openSection('home')">رجوع</div>
-
-<div class="place">
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Masmak_Fort.jpg">
-<div class="place-content">
-<h3>قصر المصمك</h3>
-<p>قلعة تاريخية شهيرة لعبت دوراً مهماً في توحيد المملكة، وتُعد رمزاً من رموز تاريخ الرياض.</p>
-<a href="https://maps.google.com/?q=قصر+المصمك" target="_blank">عرض الموقع</a>
-</div>
-</div>
-
-<div class="place">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/National_Museum_Riyadh.jpg">
-<div class="place-content">
-<h3>المتحف الوطني</h3>
-<p>يعرض تاريخ المملكة العربية السعودية منذ القدم وحتى العصر الحديث بأسلوب تعليمي حديث.</p>
-<a href="https://maps.google.com/?q=المتحف+الوطني" target="_blank">عرض الموقع</a>
-</div>
-</div>
-
+  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
+  <div class="place" data-id="masmak_fort">قصر المصمك <a href="https://maps.google.com/?q=قصر+المصمك">📍</a></div>
+  <div class="place" data-id="diriyah">الدرعية التاريخية <a href="https://maps.google.com/?q=الدرعية">📍</a></div>
+  <div class="place" data-id="at_turaif">حي الطريف <a href="https://maps.google.com/?q=حي+الطريف">📍</a></div>
+  <div class="place" data-id="salwa_palace">قصر سلوى <a href="https://maps.google.com/?q=قصر+سلوى">📍</a></div>
+  <div class="place" data-id="murabba_palace">قصر المربع <a href="https://maps.google.com/?q=قصر+المربع">📍</a></div>
 </section>
 
-<!-- الترفيه -->
+<section id="education" class="section">
+  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
+  <div class="place" data-id="ksu">جامعة الملك سعود <a href="https://maps.google.com/?q=جامعة+الملك+سعود">📍</a></div>
+  <div class="place" data-id="pnu">جامعة الأميرة نورة <a href="https://maps.google.com/?q=جامعة+الأميرة+نورة">📍</a></div>
+  <div class="place" data-id="imamu">جامعة الإمام <a href="https://maps.google.com/?q=جامعة+الإمام">📍</a></div>
+  <div class="place" data-id="alfaisal">جامعة الفيصل <a href="https://maps.google.com/?q=جامعة+الفيصل">📍</a></div>
+</section>
+
 <section id="fun" class="section">
-<div class="back" onclick="openSection('home')">رجوع</div>
-
-<div class="place">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Riyadh_Park_Mall.jpg">
-<div class="place-content">
-<h3>الرياض بارك</h3>
-<p>مجمع تجاري وترفيهي يضم محلات عالمية، مطاعم، ومناطق مخصصة للترفيه العائلي.</p>
-<a href="https://maps.google.com/?q=رياض+بارك" target="_blank">عرض الموقع</a>
-</div>
-</div>
-
-<div class="place">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Riyadh_Boulevard.jpg">
-<div class="place-content">
-<h3>بوليفارد رياض سيتي</h3>
-<p>وجهة ترفيهية حديثة تضم ألعاب، مسارح، مطاعم ومناطق فعاليات متنوعة.</p>
-<a href="https://maps.google.com/?q=بوليفارد+رياض+سيتي" target="_blank">عرض الموقع</a>
-</div>
-</div>
-
+  <div class="back" onclick="openSection('home')">⬅️ رجوع</div>
+  <div class="place" data-id="boulevard_riyadh">بوليفارد رياض سيتي <a href="https://maps.google.com/?q=بوليفارد+رياض+سيتي">📍</a></div>
+  <div class="place" data-id="riyadh_season">موسم الرياض <a href="https://maps.google.com/?q=موسم+الرياض">📍</a></div>
+  <div class="place" data-id="riyadh_park">الرياض بارك <a href="https://maps.google.com/?q=الرياض+بارك">📍</a></div>
+  <div class="place" data-id="nakheel_mall">النخيل مول <a href="https://maps.google.com/?q=النخيل+مول">📍</a></div>
 </section>
-
-<footer>
-عمل الطالبات: داليا القحطاني – راما القحطاني<br>
-إشراف الأستاذة: هيا الحرقي
-</footer>
 
 </div>
 
@@ -231,7 +107,6 @@ function openSection(id){
   document.querySelectorAll(".section").forEach(s=>s.style.display="none");
   document.getElementById(id).style.display="block";
 }
-
 function searchPlaces(){
   let v=document.getElementById("search").value.toLowerCase();
   document.querySelectorAll(".place").forEach(p=>{
