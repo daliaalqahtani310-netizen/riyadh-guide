@@ -4,82 +4,96 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>دليل الرياض</title>
+<title>بوابة الرياض</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Tahoma;
-background:url("riyadh.png") no-repeat center center fixed;
-background-size:cover;
 direction:rtl;
+background:url("riyadh.png") center/cover fixed;
 }
 
 .overlay{
-background:rgba(0,0,0,0.55);
+background:rgba(0,0,0,0.6);
 min-height:100vh;
-padding:20px;
+padding:15px;
+color:white;
 }
 
 h1{
 text-align:center;
-color:white;
-margin-bottom:30px;
-font-size:32px;
+margin:10px;
 }
 
-.section-title{
-color:#b9f6ca;
-font-size:24px;
-margin:20px 10px;
+.search{
+text-align:center;
+margin:15px;
 }
 
-.container{
+.search input{
+width:90%;
+max-width:400px;
+padding:10px;
+border-radius:8px;
+border:none;
+font-size:16px;
+}
+
+.menu,.places{
+display:none;
+}
+
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
 }
 
 .card{
 background:white;
-border-radius:12px;
+color:black;
+border-radius:10px;
 overflow:hidden;
-box-shadow:0 4px 10px rgba(0,0,0,0.4);
+cursor:pointer;
 }
 
 .card img{
 width:100%;
-height:180px;
+height:150px;
 object-fit:cover;
 }
 
-.card h2{
+.card h3{
 margin:10px;
-font-size:18px;
 }
 
 .card p{
 margin:10px;
 font-size:14px;
-color:#333;
 }
 
-.card a{
-display:block;
-margin:10px;
-padding:8px;
+.btn{
 background:#2e7d32;
 color:white;
+padding:8px;
+margin:10px;
 text-align:center;
-text-decoration:none;
 border-radius:6px;
+text-decoration:none;
+display:block;
+}
+
+.back{
+margin:10px;
+cursor:pointer;
+font-weight:bold;
 }
 
 .footer{
 text-align:center;
-color:white;
-margin-top:30px;
+margin-top:20px;
 font-size:14px;
 }
 
@@ -90,101 +104,107 @@ font-size:14px;
 
 <div class="overlay">
 
-<h1>دليل منطقة الرياض</h1>
+<h1>بوابة الرياض</h1>
+
+<div class="search">
+<input type="text" placeholder="ابحث عن مكان..." onkeyup="searchPlaces(this.value)">
+</div>
+
+<!-- الرئيسية -->
+<div id="home" class="menu" style="display:block">
+
+<div class="grid">
+
+<div class="card" onclick="openMenu('heritage')">
+<h3>أماكن أثرية</h3>
+</div>
+
+<div class="card" onclick="openMenu('education')">
+<h3>أماكن تعليمية</h3>
+</div>
+
+<div class="card" onclick="openMenu('fun')">
+<h3>أماكن ترفيهية</h3>
+</div>
+
+</div>
+</div>
 
 <!-- أثرية -->
-<div class="section-title">أماكن أثرية</div>
-<div class="container">
+<div id="heritage" class="menu">
+<div class="back" onclick="goHome()">رجوع</div>
 
-<div class="card">
+<div class="places grid">
+
+<div class="card place">
 <img src="national_museum.jpg">
-<h2>المتحف الوطني</h2>
-<p>يعد من أهم المعالم الثقافية في الرياض ويعرض تاريخ المملكة بطريقة حديثة وتفاعلية تساعد الزائر على فهم الحضارة والتراث.</p>
-<a href="https://maps.google.com/?q=المتحف+الوطني+الرياض" target="_blank">عرض الموقع</a>
+<h3>المتحف الوطني</h3>
+<p>متحف يعرض تاريخ المملكة بأسلوب تفاعلي ممتع.</p>
+<a class="btn" href="https://maps.google.com/?q=المتحف+الوطني+الرياض" target="_blank">الموقع</a>
 </div>
 
-<div class="card">
+<div class="card place">
 <img src="murabba_palace.jpg">
-<h2>قصر المربع</h2>
-<p>أحد القصور التاريخية المرتبطة بتاريخ الدولة السعودية ويعكس الطراز المعماري القديم.</p>
-<a href="https://maps.google.com/?q=قصر+المربع+الرياض" target="_blank">عرض الموقع</a>
+<h3>قصر المربع</h3>
+<p>قصر تاريخي يعكس العمارة النجدية القديمة.</p>
+<a class="btn" href="https://maps.google.com/?q=قصر+المربع" target="_blank">الموقع</a>
 </div>
 
-<div class="card">
+<div class="card place">
 <img src="masmak.jpg">
-<h2>قصر المصمك</h2>
-<p>حصن تاريخي شهير يمثل بداية تأسيس الدولة السعودية الحديثة.</p>
-<a href="https://maps.google.com/?q=قصر+المصمك" target="_blank">عرض الموقع</a>
+<h3>قصر المصمك</h3>
+<p>حصن تاريخي يمثل بداية تأسيس الدولة.</p>
+<a class="btn" href="https://maps.google.com/?q=المصمك" target="_blank">الموقع</a>
 </div>
 
-<div class="card">
-<img src="hukm_palace.jpg">
-<h2>قصر الحكم</h2>
-<p>مركز تاريخي مهم يجمع بين التراث والأنشطة الثقافية.</p>
-<a href="https://maps.google.com/?q=قصر+الحكم+الرياض" target="_blank">عرض الموقع</a>
 </div>
-
-<div class="card">
-<img src="at_turaif.jpg">
-<h2>حي الطريف</h2>
-<p>موقع تراث عالمي يعكس تاريخ الدرعية والدولة السعودية الأولى.</p>
-<a href="https://maps.google.com/?q=حي+الطريف+الدرعية" target="_blank">عرض الموقع</a>
-</div>
-
-<div class="card">
-<img src="salwa_palace.jpg">
-<h2>قصر سلوى</h2>
-<p>من أبرز معالم الدرعية التاريخية ويجسد العمارة النجدية.</p>
-<a href="https://maps.google.com/?q=قصر+سلوى+الدرعية" target="_blank">عرض الموقع</a>
-</div>
-
 </div>
 
 <!-- تعليمية -->
-<div class="section-title">أماكن تعليمية</div>
-<div class="container">
+<div id="education" class="menu">
+<div class="back" onclick="goHome()">رجوع</div>
 
-<div class="card">
-<img src="ksu.jpg">
-<h2>جامعة الملك سعود</h2>
-<p>من أعرق الجامعات في المملكة وتعد مركزًا للبحث والتعليم.</p>
-<a href="https://maps.google.com/?q=جامعة+الملك+سعود" target="_blank">عرض الموقع</a>
+<div class="grid">
+
+<div class="card" onclick="showPlaces('eduPlaces')">
+<h3>جامعات</h3>
 </div>
 
+</div>
+
+<div id="eduPlaces" class="places grid">
+
+<div class="card place">
+<img src="ksu.jpg">
+<h3>جامعة الملك سعود</h3>
+<p>من أعرق الجامعات ومركز علمي كبير.</p>
+<a class="btn" href="https://maps.google.com/?q=جامعة+الملك+سعود" target="_blank">الموقع</a>
+</div>
+
+</div>
 </div>
 
 <!-- ترفيهية -->
-<div class="section-title">أماكن ترفيهية</div>
-<div class="container">
+<div id="fun" class="menu">
+<div class="back" onclick="goHome()">رجوع</div>
 
-<div class="card">
+<div class="places grid">
+
+<div class="card place">
 <img src="boulevard.jpg">
-<h2>بوليفارد الرياض</h2>
-<p>من أكبر مناطق الترفيه ويضم مطاعم وعروض وأنشطة ممتعة.</p>
-<a href="https://maps.google.com/?q=Riyadh+Boulevard" target="_blank">عرض الموقع</a>
+<h3>بوليفارد الرياض</h3>
+<p>وجهة ترفيهية مليئة بالمطاعم والفعاليات.</p>
+<a class="btn" href="https://maps.google.com/?q=Riyadh+Boulevard" target="_blank">الموقع</a>
 </div>
 
-<div class="card">
+<div class="card place">
 <img src="riyadhpark.jpg">
-<h2>رياض بارك</h2>
-<p>مركز تجاري وترفيهي يوفر تجربة تسوق مميزة.</p>
-<a href="https://maps.google.com/?q=Riyadh+Park+Mall" target="_blank">عرض الموقع</a>
+<h3>رياض بارك</h3>
+<p>مجمع تسوق وترفيه حديث.</p>
+<a class="btn" href="https://maps.google.com/?q=Riyadh+Park" target="_blank">الموقع</a>
 </div>
 
-<div class="card">
-<img src="wadi_hanifa.jpg">
-<h2>وادي حنيفة</h2>
-<p>مكان طبيعي جميل للتنزه والاستمتاع بالأجواء الهادئة.</p>
-<a href="https://maps.google.com/?q=وادي+حنيفة" target="_blank">عرض الموقع</a>
 </div>
-
-<div class="card">
-<img src="diriyah.jpg">
-<h2>الدرعية</h2>
-<p>وجهة سياحية تجمع التاريخ والترفيه والمطاعم.</p>
-<a href="https://maps.google.com/?q=الدرعية" target="_blank">عرض الموقع</a>
-</div>
-
 </div>
 
 <div class="footer">
@@ -192,6 +212,31 @@ font-size:14px;
 </div>
 
 </div>
+
+<script>
+
+function openMenu(id){
+document.querySelectorAll(".menu").forEach(m=>m.style.display="none");
+document.getElementById(id).style.display="block";
+}
+
+function goHome(){
+document.querySelectorAll(".menu").forEach(m=>m.style.display="none");
+document.getElementById("home").style.display="block";
+}
+
+function showPlaces(id){
+document.getElementById(id).style.display="grid";
+}
+
+function searchPlaces(text){
+text=text.toLowerCase();
+document.querySelectorAll(".place").forEach(p=>{
+p.style.display=p.innerText.toLowerCase().includes(text)?"block":"none";
+});
+}
+
+</script>
 
 </body>
 </html>
