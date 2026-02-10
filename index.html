@@ -3,244 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>بوابة الرياض</title>
 
 <style>
 
 body{
 margin:0;
-font-family:Tahoma;
-direction:rtl;
-background-image:url('./riyadh.png');
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-}
-
-.overlay{
-background:rgba(0,0,0,0.6);
-min-height:100vh;
-padding:15px;
+font-family:Arial;
+background:url('./riyadh.png') center/cover fixed;
 color:white;
 }
 
-.logo{
-text-align:center;
-font-size:34px;
-font-weight:bold;
-color:#a5ffb2;
-margin-bottom:10px;
+.overlay{
+background:rgba(0,0,0,0.65);
+min-height:100vh;
+padding:20px;
 }
 
-.search{
-text-align:center;
-margin:15px;
-}
+h1,h2{text-align:center;}
 
-.search input{
-width:90%;
-max-width:400px;
-padding:10px;
-border:none;
-border-radius:8px;
-font-size:16px;
-}
-
-.section-title{
-font-size:22px;
-margin:20px 5px;
-color:#b9ffcc;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+.menu{
+display:flex;
 gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
 .card{
 background:white;
 color:black;
-border-radius:10px;
-overflow:hidden;
+border-radius:12px;
+padding:12px;
+cursor:pointer;
+width:200px;
+text-align:center;
+}
+
+.place{
+margin:15px 0;
 }
 
 .card img{
 width:100%;
-height:150px;
-object-fit:cover;
+border-radius:10px;
 }
 
-.card h3{
-margin:10px;
-}
-
-.card p{
-margin:10px;
-font-size:14px;
-}
-
-.btn{
+button{
 background:#2e7d32;
 color:white;
+border:none;
 padding:8px;
-margin:10px;
-text-align:center;
 border-radius:6px;
-text-decoration:none;
-display:block;
+cursor:pointer;
+margin-top:6px;
+}
+
+.search{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:none;
+margin-top:10px;
 }
 
 .footer{
 text-align:center;
-margin-top:20px;
+margin-top:40px;
 font-size:14px;
 }
 
+.hidden{display:none;}
+
 </style>
+
+<script>
+
+function show(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo(0,0);
+}
+
+function search(){
+let v=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".place").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none";
+});
+}
+
+function places(title,id,back,items){
+
+document.write(`
+<div id="${id}" class="page hidden">
+<button onclick="show('${back}')">رجوع</button>
+<h2>${title}</h2>
+`);
+
+items.forEach(p=>{
+document.write(`
+<div class="card place">
+<img src="${p.img}">
+<h3>${p.name}</h3>
+<p>${p.desc}</p>
+<a href="${p.map}" target="_blank">
+<button>فتح الموقع</button>
+</a>
+</div>
+`);
+});
+
+document.write(`</div>`);
+}
+
+</script>
+
 </head>
 
 <body>
 
 <div class="overlay">
 
-<div class="logo">بوابة الرياض</div>
+<h1>بوابة الرياض</h1>
 
-<div class="search">
-<input type="text" placeholder="ابحث عن مكان..." onkeyup="searchPlaces(this.value)">
+<input class="search" id="search" placeholder="ابحث عن مكان..." onkeyup="search()">
+
+<!-- الرئيسية -->
+
+<div id="home" class="page">
+
+<div class="menu">
+
+<div class="card" onclick="show('edu')">
+تعليمية
 </div>
 
-<!-- أثرية -->
-<div class="section-title">أماكن أثرية</div>
-<div class="grid">
-
-<div class="card place">
-<img src="national_museum.jpg">
-<h3>المتحف الوطني</h3>
-<p>يعرض تاريخ المملكة بأسلوب تفاعلي ممتع.</p>
-<a class="btn" href="https://maps.google.com/?q=المتحف+الوطني" target="_blank">الموقع</a>
+<div class="card" onclick="show('fun')">
+ترفيهية
 </div>
 
-<div class="card place">
-<img src="murabba_palace.jpg">
-<h3>قصر المربع</h3>
-<p>قصر تاريخي يعكس العمارة النجدية.</p>
-<a class="btn" href="https://maps.google.com/?q=قصر+المربع" target="_blank">الموقع</a>
-</div>
-
-<div class="card place">
-<img src="masmak.jpg">
-<h3>قصر المصمك</h3>
-<p>حصن تاريخي يمثل بداية الدولة.</p>
-<a class="btn" href="https://maps.google.com/?q=المصمك" target="_blank">الموقع</a>
-</div>
-
-<div class="card place">
-<img src="diriyah.jpg">
-<h3>الدرعية</h3>
-<p>موقع تراثي يجمع التاريخ والثقافة.</p>
-<a class="btn" href="https://maps.google.com/?q=الدرعية" target="_blank">الموقع</a>
+<div class="card" onclick="show('heritage')">
+أثرية
 </div>
 
 </div>
 
-<!-- تعليمية -->
-<div class="section-title">أماكن تعليمية</div>
-<div class="grid">
-
-<div class="card place">
-<img src="ksu.jpg">
-<h3>جامعة الملك سعود</h3>
-<p>من أعرق الجامعات في المملكة.</p>
 </div>
 
-<div class="card place">
-<img src="imamu.jpg">
-<h3>جامعة الإمام</h3>
-<p>صرح تعليمي عريق.</p>
-</div>
+<!-- التعليمية -->
 
-<div class="card place">
-<img src="pnu.jpg">
-<h3>جامعة الأميرة نورة</h3>
-<p>أكبر جامعة نسائية.</p>
-</div>
+<div id="edu" class="page hidden">
+<button onclick="show('home')">رجوع</button>
+<h2>تعليمية</h2>
 
-<div class="card place">
-<img src="library_kingfahd.jpg">
-<h3>مكتبة الملك فهد</h3>
-<p>مركز ثقافي ومعرفي مهم.</p>
-</div>
-
-<div class="card place">
-<img src="technical_training.jpg">
-<h3>التدريب التقني</h3>
-<p>تطوير مهارات مهنية وتقنية.</p>
+<div class="menu">
+<div class="card" onclick="show('libraries')">المكتبات</div>
+<div class="card" onclick="show('universities')">الجامعات</div>
 </div>
 
 </div>
 
-<!-- ترفيهية -->
-<div class="section-title">أماكن ترفيهية</div>
-<div class="grid">
+<!-- الترفيه -->
 
-<div class="card place">
-<img src="sixflags.jpg">
-<h3>سيكس فلاغز</h3>
-<p>مدينة ألعاب وتجارب ممتعة.</p>
-</div>
+<div id="fun" class="page hidden">
+<button onclick="show('home')">رجوع</button>
+<h2>ترفيهية</h2>
 
-<div class="card place">
-<img src="kingdom_tower.jpg">
-<h3>برج المملكة</h3>
-<p>إطلالة سياحية رائعة.</p>
-</div>
-
-<div class="card place">
-<img src="solitaire_mall.jpg">
-<h3>سوليتير مول</h3>
-<p>مجمع تسوق حديث.</p>
-</div>
-
-<div class="card place">
-<img src="riyadhpark.jpg">
-<h3>الرياض بارك</h3>
-<p>تسوق وترفيه في مكان واحد.</p>
-</div>
-
-<div class="card place">
-<img src="boulevard.jpg">
-<h3>بوليفارد</h3>
-<p>وجهة ترفيهية شهيرة.</p>
-</div>
-
-<div class="card place">
-<img src="boulevard_world.jpg">
-<h3>بوليفارد وورلد</h3>
-<p>تجارب عالمية وترفيه.</p>
-</div>
-
-</div>
-
-<div class="footer">
-عمل الطالبات داليا القحطاني وراما القحطاني — إشراف الأستاذة هيا الحرقي
+<div class="menu">
+<div class="card" onclick="show('malls')">أسواق تجارية</div>
+<div class="card" onclick="show('games')">أماكن ألعاب</div>
 </div>
 
 </div>
 
 <script>
 
-function searchPlaces(text){
-text=text.toLowerCase();
-document.querySelectorAll(".place").forEach(card=>{
-card.style.display =
-card.innerText.toLowerCase().includes(text)
-? "block" : "none";
-});
-}
+places("المكتبات","libraries","edu",[
+{img:"lib1.jpg",name:"مكتبة الملك فهد",desc:"مركز ثقافي كبير يوفر آلاف الكتب والمراجع العلمية والثقافية، ويُعد من أهم الوجهات التعليمية في الرياض حيث يجمع بين المعرفة والهدوء وبيئة القراءة المريحة.",map:"https://maps.google.com/?q=مكتبة+الملك+فهد"},
+{img:"lib2.jpg",name:"مكتبة الملك عبدالعزيز",desc:"مكتبة متطورة تقدم خدمات بحثية ومصادر تعليمية متنوعة تساعد الطلاب والباحثين على تطوير مهاراتهم العلمية والمعرفية.",map:"https://maps.google.com/?q=مكتبة+الملك+عبدالعزيز"},
+{img:"lib3.jpg",name:"مكتبة جامعة الملك سعود",desc:"مكتبة أكاديمية ضخمة تحتوي على مصادر تعليمية متخصصة تخدم طلاب الجامعة في مختلف المجالات.",map:"https://maps.google.com/?q=جامعة+الملك+سعود"},
+{img:"lib4.jpg",name:"مكتبة الطفل",desc:"بيئة تعليمية ممتعة تشجع الأطفال على القراءة وتنمية مهارات التفكير والإبداع.",map:"https://maps.google.com/?q=مكتبة+الطفل"},
+{img:"lib5.jpg",name:"مكتبة عامة",desc:"مكان هادئ يوفر كتبًا متنوعة ومساحات مناسبة للدراسة والقراءة.",map:"https://maps.google.com/?q=مكتبة"}
+]);
+
+places("الجامعات","universities","edu",[
+{img:"uni1.jpg",name:"جامعة الملك سعود",desc:"واحدة من أعرق الجامعات في المملكة، تقدم برامج تعليمية وبحثية عالية المستوى.",map:"https://maps.google.com/?q=جامعة+الملك+سعود"},
+{img:"uni2.jpg",name:"جامعة الأميرة نورة",desc:"جامعة نسائية رائدة توفر بيئة تعليمية حديثة ومتطورة.",map:"https://maps.google.com/?q=جامعة+الأميرة+نورة"},
+{img:"uni3.jpg",name:"جامعة الفيصل",desc:"جامعة حديثة تركز على التعليم العالمي والتخصصات المتقدمة.",map:"https://maps.google.com/?q=جامعة+الفيصل"},
+{img:"uni4.jpg",name:"جامعة الإمام محمد بن سعود",desc:"جامعة حكومية عريقة تجمع بين التعليم الأكاديمي والبحث العلمي.",map:"https://maps.google.com/?q=جامعة+الإمام"},
+{img:"uni5.jpg",name:"جامعة الملك عبدالله للتقنية",desc:"جامعة بحثية عالمية متخصصة في العلوم والتقنية.",map:"https://maps.google.com/?q=KAUST"}
+]);
+
+places("الأسواق التجارية","malls","fun",[
+{img:"mall1.jpg",name:"الرياض بارك",desc:"مول حديث يجمع بين التسوق والترفيه والمطاعم في مكان واحد.",map:"https://maps.google.com/?q=الرياض+بارك"},
+{img:"mall2.jpg",name:"سوليتير مول",desc:"وجهة تسوق فاخرة تقدم تجربة راقية للزوار.",map:"https://maps.google.com/?q=سوليتير+مول"},
+{img:"mall3.jpg",name:"النخيل مول",desc:"مجمع تجاري كبير يوفر خيارات متنوعة للتسوق والترفيه.",map:"https://maps.google.com/?q=النخيل+مول"},
+{img:"mall4.jpg",name:"الفيصلية مول",desc:"مول راقٍ يحتوي على متاجر عالمية ومطاعم مميزة.",map:"https://maps.google.com/?q=الفيصلية"},
+{img:"mall5.jpg",name:"غرناطة مول",desc:"مركز تسوق متكامل مناسب للعائلات.",map:"https://maps.google.com/?q=غرناطة+مول"}
+]);
+
+places("أماكن الألعاب","games","fun",[
+{img:"game1.jpg",name:"بوليفارد سيتي",desc:"من أشهر الوجهات الترفيهية في الرياض ويضم فعاليات وتجارب ممتعة.",map:"https://maps.google.com/?q=بوليفارد+سيتي"},
+{img:"game2.jpg",name:"بوليفارد وورلد",desc:"تجربة عالمية تجمع ثقافات وترفيه في مكان واحد.",map:"https://maps.google.com/?q=بوليفارد+وورلد"},
+{img:"game3.jpg",name:"سيكس فلاقز",desc:"مدينة ألعاب ضخمة تقدم مغامرات وتجارب مشوقة.",map:"https://maps.google.com/?q=Six+Flags+Riyadh"},
+{img:"game4.jpg",name:"دووس كارتينق",desc:"حلبة سباق كارتينق حديثة لعشاق السرعة.",map:"https://maps.google.com/?q=Doos+Karting"},
+{img:"game5.jpg",name:"وووش",desc:"مركز ألعاب تفاعلي يقدم أنشطة ممتعة لجميع الأعمار.",map:"https://maps.google.com/?q=wooosh"}
+]);
+
+places("مواقع تاريخية","heritage","home",[
+{img:"museum1.jpg",name:"المتحف الوطني",desc:"يوثق تاريخ المملكة عبر معروضات تعليمية وتاريخية مميزة.",map:"https://maps.google.com/?q=المتحف+الوطني"},
+{img:"museum2.jpg",name:"قصر المصمك",desc:"معلم تاريخي بارز يروي قصة تأسيس الرياض.",map:"https://maps.google.com/?q=المصمك"},
+{img:"museum3.jpg",name:"الدرعية",desc:"موقع تراث عالمي يعكس تاريخ الدولة السعودية.",map:"https://maps.google.com/?q=الدرعية"},
+{img:"museum4.jpg",name:"سوق الزل",desc:"سوق شعبي قديم يعرض التراث النجدي.",map:"https://maps.google.com/?q=سوق+الزل"},
+{img:"museum5.jpg",name:"حي الطريف",desc:"منطقة تاريخية مسجلة ضمن التراث العالمي.",map:"https://maps.google.com/?q=حي+الطريف"}
+]);
 
 </script>
+
+<div class="footer">
+عمل الطالبات داليا القحطاني و راما القحطاني<br>
+إشراف الأستاذة القديرة هيا الحرقي
+</div>
+
+</div>
 
 </body>
 </html>
